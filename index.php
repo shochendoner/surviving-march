@@ -9,9 +9,9 @@
 </section>
 
 <section class="index-categories">
-  <h2>Make Your Selections</h2>
+  <h2>Game Rules</h2>
   <div class="card-body p-0 mt-3">
-  <p class="card-text lead text-muted text-center hm mt-2">Game Rules: </p>
+  <p class="card-text lead text-muted text-center hm mt-2"></p>
   <p class="card-text">
     "Entry Fee is $20. Preferable method of payment is venmo (@Dhoch7). If you do not have venmo, please coordinate with someone who does because that is the easiest way for me to pay out the winner(s).
 
@@ -41,11 +41,7 @@
     This is a survivor pool, and the reason for the above is to make it more difficult for those who have already picked a loser. You can buy-in as many times as you would like, but the last day to buy in would be Monday of the first weekend.  If you pick any loser on Monday or beyond, you can not buy back in.  And remember, just because you buy back in, it does not reset the teams you can choose from.  Each team you have chosen before is not available for selection again.  
 
     In the event that you have advanced and do not have anyone else remaining to choose from because you have chosen all of the teams before that round, you would still tie any player that does not correctly guess the next round.  For instance, if I were to have no remaining teams left after Sunday, but one other person was left and they did not pick a winner on Saturday, we would tie and split the pot."
-    </div>
-    <div class="index-categories-list">
-    <div>
-      <h3>Your Picks</h3>
-    </div>
+    
   </div>
 </section>
 

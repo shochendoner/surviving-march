@@ -103,8 +103,8 @@ section {
 }
 
 .index-categories-list div {
-  width: 24%;
-  height: 100px;
+  width: 20%;
+  height: 75px;
   background-color: #dd7926;
   display: flex;
   justify-content: center;
