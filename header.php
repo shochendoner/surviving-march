@@ -21,6 +21,7 @@
         <a href="index.php"><img src="img/logo-white.png" alt="Blogs logo"></a>
         <ul>
           <li><a href="index.php">Home</a></li>
+          <li><a href="makepicks.php">Make Picks</a></li>
           <?php
             if (isset($_SESSION["useruid"])) {
               echo "<li><a href='profile.php'>Profile Page</a></li>";
