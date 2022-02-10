@@ -3,7 +3,7 @@
 ?>
 
 <section class="index-intro">
-  <h1>Make Your Selections/h1>
+  <h1>Make Your Selections</h1>
 </section>
 
 
