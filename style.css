@@ -9,14 +9,15 @@ body {
 
 h1,
 h2,
-h3,
-h4,
 h5,
 h6,
 p {
   font-family: "Roboto", sans-serif;
   color: #111;
-  line-height: 24px;
+  line-height: 200px;
+  text-align: justify;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 h1 {
@@ -36,12 +37,22 @@ h2 {
 h3 {
   font-weight: 500;
   font-size: 16px;
-  color: #fff;
+  color: #111;
+  text-align:center;
+}
+
+h4 {
+  text-align: center;
+  color:#111;
 }
 
 p {
   font-weight: 400;
   font-size: 16px;
+  text-align: justify;  
+  line-height: 28px;  
+  padding: 10px;
+  margin-top: 10px;
 }
 
 nav {
@@ -88,6 +99,35 @@ section {
   background-color: #fff;
   width: 94%;
   padding: 20px 3%;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: justify;  
+  line-height: 28px;  
+  margin-top: 10px;
+  list-style-type: square;
+}
+
+
+section .index-categories-rules{
+
+  font-weight: 400;
+  font-size: 16px;
+  text-align: justify;  
+  line-height: 28px;  
+  padding: 10px;
+  margin-top: 10px;
+
+}
+
+.rules p{
+
+  font-weight: 400;
+  font-size: 16px;
+  text-align: justify;  
+  line-height: 28px;  
+  padding: 10px;
+  margin-top: 10px
+
 }
 
 /* index */
@@ -111,6 +151,15 @@ section {
   align-items: center;
 }
 
+.index-categories-rules p {
+  
+    margin: 1em 10%;
+    padding: 1em 3em;
+    border: 1px solid #999;
+    background: #eee;
+    justify-content: left;
+    font: "tahoma"
+}
 /* sign up */
 
 .signup-form-form {
@@ -126,6 +175,17 @@ section {
 
 .signup-form form {
   width: 30%;
+}
+
+.index-catergories.list {
+
+  margin: 1em 10%;
+    padding: 1em 3em;
+    border: 1px solid #999;
+    background: #eee;
+    justify-content: left;
+    font: "tahoma"
+
 }
 
 .signup-form form input {
