@@ -9,7 +9,7 @@
 <div class="rules">
 <section class="index-categories">
   <h2>Game Rules</h2>
-  <h3>"IMPORTANT: This game has no monetary reward associated with it and is simply for entertainment purposes.</h3>
+  <h3>IMPORTANT: This game has no monetary reward associated with it and is simply for entertainment purposes.</h3>
 </section>
 <section class="rules-text-01">
     
@@ -19,10 +19,10 @@
        <li>Picks must be made prior to tip off of the first game for every single day. Even if your team/teams do not play until night.</li>
        <li>Below is how many picks are required to be made each day if you are correct:</li>
         <ul>
-          <li>Friday - 2 picks</li>
-          <li>Saturday - 2 picks</li>
-          <li>Sunday - 1 pick</li>
-          <li>Monday - 1 pick</li>
+          <li>Thursday - 2 picks</li>
+          <li>Friday -   2 picks</li>
+          <li>Saturday - 1 pick</li>
+          <li>Sunday -   1 pick</li>
           <li>Every following day is also 1 pick.</li>
         </ul>
         <li>If you pick incorrectly, you are out unless you re-enter the game.</li>
@@ -44,7 +44,9 @@
       
 
        <li>In the event that you have advanced and do not have anyone else remaining to choose from, you would still tie any player that does not correctly guess the next round.</li>
-       <li>For instance, if Steve were to have no remaining teams left after Sunday, but one other person was left and they did not pick a winner on Saturday, Steve and Dave would tie and split the pot.</li>
+       <ul>
+       <li>For instance, if Steve were to have no remaining teams left after Sunday, but only Dave was left and he did not pick a winner on the next day of picks, Steve and Dave would tie and split the pot.</li>
+      </ul>
       </ol>
   </section>
         </div>

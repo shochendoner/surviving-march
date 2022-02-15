@@ -19,8 +19,8 @@ p {
 }
 
 h1 {
-  font-weight: 600;
-  font-size: 32px;
+  font-weight: 700;
+  font-size: 50px;
   padding: 20px 0;
   text-align: center;
 }
@@ -48,7 +48,7 @@ h4 {
 
 p {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 nav {
@@ -103,14 +103,19 @@ li {
 }
 
 .rules-text-01 ol {
-  margin-left: 30px;
-  text-indent: 5px;
+  margin: auto;
+  margin-left: 20px;
+  list-style-position: inside;
+  text-indent: -20px;
+  width: fit-content;
 }
 
 .rules-text-01 ul {
-  margin-left: 30px;
-  text-indent: 5px;
-  text-align-last: auto;
+  width: fit-content;
+  padding-left: 15px;
+  list-style-position: inside;
+  text-indent: -20px; /* key property */
+  margin-left: 20px; /* key property */
 }
 
 /* index */
