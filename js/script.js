@@ -14,9 +14,8 @@ for (let i = 0; i < getNav.length; i++) {
   let pageNavExists = pageUrl.includes(pageFinalName);
   // Change links color
   if (pageNavExists == true) {
-    getNav[i].style.cssText = "color: #31a6ff;";
-  }
-  else if (pageUrlName[pageUrlLength] == "") {
-    getNav[0].style.cssText = "color: #31a6ff;";
+    getNav[i].style.cssText = "color: #085cc9;";
+  } else if (pageUrlName[pageUrlLength] == "") {
+    getNav[0].style.cssText = "color: #085cc9;";
   }
 }

@@ -18,7 +18,7 @@
     <!--A quick navigation-->
     <nav>
       <div class="wrapper">
-        <a href="index.php"><img src="img/logo-white.png" alt="Blogs logo"></a>
+        <a href="index.php"><img src="img/logo-white.png"></a>
         <ul>
           <li><a href="index.php">Home</a></li>
           <li><a href="makepicks.php">Make Picks</a></li>
