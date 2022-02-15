@@ -33,16 +33,14 @@
         <li>Below is the schedule for how many games you will need to pick in order re-enter the game and advance:</li>
 
       <ul>
-          <li>If you get any wrong on Friday, must pick 4 winners on Saturday. If all 4 on Saturday are correct, you will advance and will only need to pick 1 winner Sunday.</li>
+          <li>If you get any wrong on Thursday, must pick 4 winners on Friday. If all 4 on Friday are correct, you will advance and will only need to pick 1 winner Saturday.</li>
 
-          <li>If you get any wrong on Saturday, must pick 5 winners on Sunday. If all 5 on Sunday are correct, you will advance and will only need to pick 1 winner Monday.</li>
+          <li>If you get any wrong on Friday, must pick 5 winners on Saturday. If all 5 on Saturday are correct, you will advance and will only need to pick 1 winner Sunday.</li>
 
-          <li>If you get any wrong Sunday, must pick 6 winners on Monday. If all 6 on Monday are correct, you will advance and will only need to pick one winner on Saturday of the 2nd week.</li>
+          <li>If you get any wrong Saturday, must pick 6 winners on Sunday. If all 6 on Sunday are correct, you will advance and will only need to pick one winner on Thursday of the 2nd week.</li>
       </ul>
        <li>This is a survivor pool, and the reason for the above is to make it more difficult for those who have already picked a loser. You can re-enter as many times as you would like, but the last day to re-enter would be Monday of the first weekend.</li> 
        <li>If you pick any loser on Monday or beyond, you can not re-enter Please note, just because you re-enter, it does not reset the teams you can choose from.</li>
-      
-
        <li>In the event that you have advanced and do not have anyone else remaining to choose from, you would still tie any player that does not correctly guess the next round.</li>
        <ul>
        <li>For instance, if Steve were to have no remaining teams left after Sunday, but only Dave was left and he did not pick a winner on the next day of picks, Steve and Dave would tie and split the pot.</li>
