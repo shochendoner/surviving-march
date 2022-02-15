@@ -39,6 +39,13 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  font-weight: 500;
+  font-size: 24px;
+  padding: 10px 0;
+  text-align: center;
+}
+
 p {
   font-weight: 400;
   font-size: 16px;
@@ -88,6 +95,22 @@ section {
   background-color: #fff;
   width: 94%;
   padding: 10px 3%;
+}
+
+li {
+  margin: 10px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.rules-text-01 ol {
+  margin-left: 30px;
+  text-indent: 5px;
+}
+
+.rules-text-01 ul {
+  margin-left: 30px;
+  text-indent: 5px;
+  text-align-last: auto;
 }
 
 /* index */
