@@ -142,11 +142,23 @@ function makePicks($conn, $pickOne, $pickTwo) {
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-	mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
+	mysqli_stmt_bind_param($stmt, "ssss", $pickOne, $pickTwo, $username, $hashedPwd);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
-	header("location: ../signup.php?error=none");
+	header("location: ../makepicks.php?error=none");
 	exit();
 }
+
+  // Picks Error
+	function wrongPicksEntry($pickone, $picktwo){
+		$result;
+		if (empty($pickone) || empty($picktwo)) {
+			$result = true;
+		}
+		else {
+			$result = false;
+		}
+		return $result;
+	}
 }

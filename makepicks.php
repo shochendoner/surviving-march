@@ -1,6 +1,16 @@
 <?php
   include_once 'header.php';
 ?>
+<section class="login-check">
+<?php
+if(!isset($_SESSION['userid'])){
+  echo "Not logged in : <a href=login.php>Login</a> |
+   <a href=signup.php>Signup Here</a></font> ";
+   exit;
+}else{
+}
+?>
+</section>
 <section class="index-intro">
   <h1>Make Your Selections</h1>
 </section>
@@ -10,13 +20,37 @@
   <div class="picks-form-form">
   <form action="includes/makepicks.inc.php" method="post">
   <form method="post" action="">
+  <span>Select languages</span><br/>
+    <input type="checkbox" name='pick[]' value="PHP"> PHP <br/>
+    <input type="checkbox" name='pick[]' value="JavaScript"> JavaScript <br/>
+    <input type="checkbox" name='pick[]' value="jQuery"> jQuery <br/>
+    <input type="checkbox" name='pick[]' value="Angular JS"> Angular JS <br/>
+
+    <input type="submit" value="Submit" name="submit">
+</form>
+
+<?php
+if(isset($_POST['submit'])){
+
+    if(!empty($_POST['lang'])) {
+
+        foreach($_POST['lang'] as $value){
+            echo "value : ".$value.'<br/>';
+        }
+
+    }
+
+}
+?>
+
+
     <span>Select Teams</span><br/>
     <?php
 
     $checked_arr = array();
 
     // Fetch checked values
-    $fetchLang = mysqli_query($con,"SELECT * FROM dayoneteams");
+    $fetchTeams = mysqli_query($con,"SELECT * FROM dayoneteams");
     if(mysqli_num_rows($fetchTeams) > 0){
       $result = mysqli_fetch_assoc($fetchTeams);
       $checked_arr = explode(",",$result['dayoneteams']);
@@ -30,12 +64,14 @@
       if(in_array($dayoneteams,$checked_arr)){
         $checked = "checked";
       }
-      echo '<input type="checkbox" name="lang[]" value="'.$dayoneteams.'" '.$checked.' > '.$dayoneteams.' <br/>';
+      echo '<input type="checkbox" name="picks[]" value="'.$dayoneteams.'" '.$checked.' > '.$dayoneteams.' <br/>';
     }
     ?>
  
     <input type="submit" value="Submit" name="submit">
   </form>
+
+
 
 
 

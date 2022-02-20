@@ -118,6 +118,13 @@ li {
   margin-left: 20px; /* key property */
 }
 
+.login-check {
+  padding-left: 10px;
+  display: block;
+  justify-content: left;
+  font-family: "Roboto", sans-serif;
+}
+
 /* index */
 
 .index-intro p {
@@ -167,4 +174,9 @@ li {
   padding: 10px 20px;
   margin: 10px auto;
   cursor: pointer;
+}
+
+.picks-form form {
+  font-family: "Roboto", sans-serif;
+  display: block;
 }
