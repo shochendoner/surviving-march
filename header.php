@@ -16,9 +16,6 @@
   <body>
 
     <!--A quick navigation-->
-
-  $username = 
-  
     <nav>
       <div class="wrapper">
         <a href="index.php"><img src="img/logo-white.png"></a>
@@ -26,8 +23,8 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="makepicks.php">Make Picks</a></li>
           <?php
-            if (isset($_SESSION["useruid"])) {
-              echo "<li><a href='profile.php'>$_SESSION[useruid]</a></li>";
+            if (isset($_SESSION["usersName"])) {
+              echo "<li><a href='profile.php'>$_SESSION[usersName]</a></li>";
               echo "<li><a href='logout.php'>Logout</a></li>";
             }
             else {

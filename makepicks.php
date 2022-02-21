@@ -1,70 +1,79 @@
 <?php
   include_once 'header.php';
 ?>
+
 <section class="login-check">
 <?php
-if(!isset($_SESSION['userid'])){
+if(!isset($_SESSION['useruid'])){
   echo "Not logged in : <a href=login.php>Login</a> |
    <a href=signup.php>Signup Here</a></font> ";
    exit;
 }else{
 }
 ?>
-</section>
-<section class="index-intro">
+  </section>
+  <section class="index-intro">
+  
   <h1>Make Your Selections</h1>
-</section>
+  </section>
+  <section class="picks-form">
+    <h2>Choose Two Teams for Day One</h2>
+    <div class="picks-form-form">
+    <form method="post" action="">
+    <span>Select Teams</span><br/>
+      <input type="checkbox" name='pick[]' value="Baylor"> Baylor <br/>
+      <input type="checkbox" name='pick[]' value="Maryland"> Maryland <br/>
+      <input type="checkbox" name='pick[]' value="North Carolina"> North carolina <br/>
+      <input type="checkbox" name='pick[]' value="Duke"> Duke <br/>
+      <input type="checkbox" name='pick[]' value="Nine fifty five"> ten sixteen<br/>
 
-<section class="picks-form">
-  <h2>Choose Two Teams for Day One</h2>
-  <div class="picks-form-form">
-  <form action="includes/makepicks.inc.php" method="post">
-  <form method="post" action="">
-  <span>Select languages</span><br/>
-    <input type="checkbox" name='pick[]' value="PHP"> PHP <br/>
-    <input type="checkbox" name='pick[]' value="JavaScript"> JavaScript <br/>
-    <input type="checkbox" name='pick[]' value="jQuery"> jQuery <br/>
-    <input type="checkbox" name='pick[]' value="Angular JS"> Angular JS <br/>
-
-    <input type="submit" value="Submit" name="submit">
+      <input type="submit" value="Submit" name="submit">
 </form>
-
 <?php
-if(isset($_POST['submit'])){
 
-    if(!empty($_POST['lang'])) {
+$id = $_SESSION['usersuid'];
 
-        foreach($_POST['lang'] as $value){
-            echo "value : ".$value.'<br/>';
-        }
+  if(isset($_POST['submit'])){
 
+    if(!empty($_POST['teams'])) {
+
+      $teams = implode(",",$_POST['teams']);
+
+      // Insert and Update record
+      $checkEntries = mysqli_query($con,"SELECT * FROM users");
+      if(mysqli_num_rows($checkEntries) == 0){
+        mysqli_query($con,"INSERT INTO users(pickOne) WHERE usersuid=$id VALUES('".$teams."')");
+      }else{
+        mysqli_query($con,"UPDATE users WHERE usersuid=$id SET pickOne='".$teams."' ");
+      }
+ 
     }
 
-}
-?>
-
-
+  }
+  ?>
+  
+  <form method="post" action="">
     <span>Select Teams</span><br/>
     <?php
 
     $checked_arr = array();
 
     // Fetch checked values
-    $fetchTeams = mysqli_query($con,"SELECT * FROM dayoneteams");
-    if(mysqli_num_rows($fetchTeams) > 0){
-      $result = mysqli_fetch_assoc($fetchTeams);
-      $checked_arr = explode(",",$result['dayoneteams']);
+    $fetchLang = mysqli_query($con,"SELECT * FROM languages");
+    if(mysqli_num_rows($fetchLang) > 0){
+      $result = mysqli_fetch_assoc($fetchLang);
+      $checked_arr = explode(",",$result['language']);
     }
 
     // Create checkboxes
-    $dayoneteams_arr = array("Baylor","Duke","North Carolina","Michigan State","Yale","Maryland");
-    foreach($dayoneteams_arr as $dayoneteams){
+    $languages_arr = array("PHP","JavaScript","jQuery","AngularJS");
+    foreach($languages_arr as $language){
 
       $checked = "";
-      if(in_array($dayoneteams,$checked_arr)){
+      if(in_array($language,$checked_arr)){
         $checked = "checked";
       }
-      echo '<input type="checkbox" name="picks[]" value="'.$dayoneteams.'" '.$checked.' > '.$dayoneteams.' <br/>';
+      echo '<input type="checkbox" name="lang[]" Team One="'.$language.'" '.$checked.' > '.$language.' <br/>';
     }
     ?>
  
@@ -90,28 +99,57 @@ if(isset($_POST['submit'])){
 
 
 
-  
 
+
+
+
+
+
+
+
+<?php
+if(isset($_POST['submit'])){
+
+    if(!empty($_POST['pick'])) {
+
+        foreach($_POST['pick'] as $value){
+            echo "value : ".$value.'<br/>';
+        }
+
+    }
+
+}
+?>
+
+<?php
+
+include_once 'dbh.inc.php';
+
+$sql = "SELECT * FROM teams";
+$result = mysqli_query($conn, $sql);
+$datas = array();
+  if (mysqli_num_rows($result) > 0) {
+      while($row = mysqli_fetch_assoc($result)){
+        $datas[] = $row;
+      }
+
+      }
+
+// print_r($datas);
+foreach ($datas as $data){
+    echo $data["team_name"]." ";
+
+}
+
+?>
   <?php
     // Error messages
     if (isset($_GET["error"])) {
       if ($_GET["error"] == "emptyinput") {
         echo "<p>Fill in both selections!</p>";
       }
-      else if ($_GET["error"] == "invaliduid") {
-        echo "<p>Choose a proper username!</p>";
-      }
-      else if ($_GET["error"] == "invalidemail") {
-        echo "<p>Choose a proper email!</p>";
-      }
-      else if ($_GET["error"] == "passwordsdontmatch") {
-        echo "<p>Passwords doesn't match!</p>";
-      }
       else if ($_GET["error"] == "stmtfailed") {
         echo "<p>Something went wrong!</p>";
-      }
-      else if ($_GET["error"] == "usernametaken") {
-        echo "<p>Username already taken!</p>";
       }
       else if ($_GET["error"] == "none") {
         echo "<p>Your selections have been made!</p>";

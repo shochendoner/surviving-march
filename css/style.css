@@ -146,6 +146,11 @@ li {
   align-items: center;
 }
 
+.card-body form {
+  color: #111;
+  padding: 6px;
+}
+
 /* sign up */
 
 .signup-form-form {

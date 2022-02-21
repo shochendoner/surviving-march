@@ -126,23 +126,21 @@ function loginUser($conn, $username, $pwd) {
 		session_start();
 		$_SESSION["userid"] = $uidExists["usersId"];
 		$_SESSION["useruid"] = $uidExists["usersUid"];
+		$_SESSION["usersName"] = $uidExists["usersName"];
 		header("location: ../index.php?error=none");
 		exit();
 	}
 
 	// Insert new picks into database
-function makePicks($conn, $pickOne, $pickTwo) {
-  $sql = "INSERT INTO users (pickOne, pickTwo) VALUES (?, ?);";
-
+function makePicks($conn, $pickOne, $pickTwo, $usersid) {
+  // $sql = "INSERT INTO users (pickOne, pickTwo) VALUES (?, ?);";
+	$sql = "UPDATE pickOne WHERE usersid='$usersid'";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 	 	header("location: ../makepicks.php?error=stmtfailed");
 		exit();
 	}
-
-	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-
-	mysqli_stmt_bind_param($stmt, "ssss", $pickOne, $pickTwo, $username, $hashedPwd);
+	mysqli_stmt_bind_param($stmt, "ssss", $pickOne, $pickTwo, $usersid);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($conn);
