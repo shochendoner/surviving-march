@@ -2,7 +2,7 @@
 
 require_once "dbh.inc.php";
 
-$id = $_SESSION['usersuid'];
+$id = $_SESSION['usersid'];
 
 if (isset($_POST["submit"])) {
 
@@ -13,9 +13,9 @@ if (isset($_POST["submit"])) {
     // Insert and Update record
     $checkEntries = mysqli_query($con,"SELECT * FROM users");
     if(mysqli_num_rows($checkEntries) == 0){
-      mysqli_query($con,"INSERT INTO users (pickOne, pickTwo) WHERE usersuid=$id VALUES('".$picks."')");
+      mysqli_query($con,"INSERT INTO users (pickOne, pickTwo) WHERE usersid=$id VALUES('".$picks."')");
     }else{
-      mysqli_query($con,"UPDATE users (pickOne, pickTwo) WHERE usersuid=$id SET pickOne='".$picks."' ");
+      mysqli_query($con,"UPDATE users (pickOne, pickTwo) WHERE usersid=$id SET pickOne='".$picks."' ");
       header("location: ../makepicks.php");
     exit();
     }

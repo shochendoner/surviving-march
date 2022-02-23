@@ -4,7 +4,7 @@
 
 <section class="login-check">
 <?php
-if(!isset($_SESSION['useruid'])){
+if(!isset($_SESSION['usersid'])){
   echo "Not logged in : <a href=login.php>Login</a> |
    <a href=signup.php>Signup Here</a></font> ";
    exit;
@@ -15,7 +15,6 @@ if(!isset($_SESSION['useruid'])){
                         <h4>How to Get Multiple Values from DB in Checkbox in php</h4>
                     </div>
                     <div class="card-body">
-
                         <form action="code.php" method="POST">
                         <?php
                   $conn = mysqli_connect("march.mysql.database.azure.com","madwhiteups","Sharks2424!","userregistration");

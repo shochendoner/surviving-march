@@ -1,9 +1,9 @@
 <?php
-include_once header.php;
+include_once 'header.php';
 
-  $conn = mysqli_connect("march.mysql.database.azure.com","madwhiteups","Sharks2424!","userregistration");
+$conn = mysqli_connect("march.mysql.database.azure.com","madwhiteups","Sharks2424!","userregistration");
 
-  $id = $_SESSION['useruid'];
+$id = $_SESSION['usersid'];
 if(isset($_POST['save_multicheckbox']))
 {
     $teamslist = $_POST['teamslist'];
@@ -11,19 +11,18 @@ if(isset($_POST['save_multicheckbox']))
     {
         // echo $branditems."<br>";
         
-        $query = "UPDATE users SET pickOne = '$teamitems' WHERE usersuid = '$id'";
+        $query = "INSERT INTO users (pickOne, pickTwo) WHERE usersid= $id VALUE $teamitems ";
         $query_run = mysqli_query($conn, $query);
     }
-
-    if($query_run==true)
+    if($query_run)
     {
-        $_SESSION['useruid'] = "Inserted Successfully";
-        header("Location: profile.php");
+        $_SESSION['status'] = "Inserted Successfully";
+        header("Location: index.php");
     }
     else
     {
-        $_SESSION['useruid'] = "Selections Have Already Been Made for This Day";
-        header("Location: profile.php");
+        $_SESSION['status'] = "Not Inserted";
+        header("Location: index.php");
     }
 }
 ?>
