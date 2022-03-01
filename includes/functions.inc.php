@@ -131,26 +131,29 @@ function loginUser($conn, $username, $pwd) {
 		exit();
 	}
 
-	// Insert new picks into database
-function makePicks($conn, $pickOne, $pickTwo, $usersid) {
-  // $sql = "INSERT INTO users (pickOne, pickTwo) VALUES (?, ?);";
-	$sql = "UPDATE pickOne WHERE usersid='$usersid'";
+}
+function makePicks($conn, $pickone, $picktwo, $id) {
+	$sql = "INSERT INTO users (pickOne, pickTwo, usersid)
+	VALUES (?, ?, ?)
+	ON DUPLICATE KEY UPDATE
+			pickOne = VALUES(pickOne),
+			pickTwo = VALUES(pickTwo)";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 	 	header("location: ../makepicks.php?error=stmtfailed");
 		exit();
 	}
-	mysqli_stmt_bind_param($stmt, "ssss", $pickOne, $pickTwo, $usersid);
+	mysqli_stmt_bind_param($stmt, "sss", $pickone, $picktwo, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	mysqli_close($conn);
 	header("location: ../makepicks.php?error=none");
 	exit();
 }
 
+
   // Picks Error
-	function wrongPicksEntry($pickone, $picktwo){
-		$result;
+function wrongPicksEntry($pickone, $picktwo){
+	$result;
 		if (empty($pickone) || empty($picktwo)) {
 			$result = true;
 		}
@@ -159,4 +162,4 @@ function makePicks($conn, $pickOne, $pickTwo, $usersid) {
 		}
 		return $result;
 	}
-}
+

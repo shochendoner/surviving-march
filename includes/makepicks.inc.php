@@ -1,26 +1,32 @@
 <?php
-
-require_once "dbh.inc.php";
-
+session_start();
+if(!isset($_SESSION['usersid'])){
 $id = $_SESSION['usersid'];
-
+}else{
 if (isset($_POST["submit"])) {
 
-  if(!empty($_POST['pick'])) {
+  // First we get the form data from the URL
+  $pickOne = $_POST["pickOne"];
+  $pickTwo = $_POST["pickTwo"];
+  $id = $_SESSION['usersid'];
 
-    $picks = implode(",",$_POST['pick']);
+  // Then we run a bunch of error handlers to catch any user mistakes we can (you can add more than I did)
+  // These functions can be found in functions.inc.php
 
-    // Insert and Update record
-    $checkEntries = mysqli_query($con,"SELECT * FROM users");
-    if(mysqli_num_rows($checkEntries) == 0){
-      mysqli_query($con,"INSERT INTO users (pickOne, pickTwo) WHERE usersid=$id VALUES('".$picks."')");
-    }else{
-      mysqli_query($con,"UPDATE users (pickOne, pickTwo) WHERE usersid=$id SET pickOne='".$picks."' ");
-      header("location: ../makepicks.php");
+  require_once "dbh.inc.php";
+  require_once 'functions.inc.php';
+
+  // Left inputs empty
+  // We set the functions "!== false" since "=== true" has a risk of giving us the wrong outcome
+ 
+
+  // If we get to here, it means there are no user errors
+
+  // Now we insert the user into the database
+  makePicks($conn, $pickOne, $pickTwo, $id);
+
+} else {
+	header("location: ../makepicks.php");
     exit();
-    }
-
-  }
-
 }
-?>
+}

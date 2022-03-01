@@ -9,7 +9,9 @@ if(isset($_POST['save_select']))
     $picktwo = $_POST['pickTwo'];
     
 
-    $query = "UPDATE users (pickOne,pickTwo) WHERE usersid = '$id' VALUES ('$pickone','$picktwo')";
+    // $query = "UPDATE users SET pickOne = '$pickone', picktwo = '$picktwo' WHERE usersid = '$id'";
+
+    $query = "INSERT INTO users SET pickOne = $pickone, picktwo = $picktwo, usersid = $id ON DUPLICATE KEY UPDATE pickone = $pickone, picktwo = $picktwo";
     $query_run = mysqli_query($conn, $query);
 
     if($query_run)
