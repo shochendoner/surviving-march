@@ -19,7 +19,6 @@ if (isset($_POST["submit"])) {
   // Left inputs empty
   // We set the functions "!== false" since "=== true" has a risk of giving us the wrong outcome
  
-
   // If we get to here, it means there are no user errors
 
   // Now we insert the user into the database
