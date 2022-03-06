@@ -11,15 +11,16 @@ if(!isset($_SESSION['usersid'])){
 }else{
 }
 ?>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
 </section>
   <section class="index-intro">
   <h1>Make Your Selections</h1>
   </section>
-      <section class="pick-teams-two">
-        <div class="card-header">
-            <div class="card-body">
+        
+        <div class="select" tabindex="1">
               <form action="includes/makepicks.inc.php" method="POST">     
-                <div class="from-group mb-3"> 
+              
                 <select name="pickOne" class="form-control">
                 <option selected="selected">--Select Team One--</option>
                 <?php
@@ -45,12 +46,11 @@ if(!isset($_SESSION['usersid'])){
                 }
                 ?>
                 </select>
-              </div>
+              
                   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
-              
-              </section>
-
+          </div>
+        
 
 <?php
   include_once 'footer.php';

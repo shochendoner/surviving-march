@@ -3,13 +3,10 @@ session_start();
 
 include "dbh.inc.php";
 
-
  print_r ($_SESSION['usersid']);
 
 if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
-
-  print_r ($_SESSION['usersid']);
 }
 if(isset($_POST['save_multicheckbox']))
 {
