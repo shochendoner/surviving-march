@@ -19,3 +19,8 @@ for (let i = 0; i < getNav.length; i++) {
     getNav[0].style.cssText = "color: #085cc9;";
   }
 }
+$(document).ready(function () {
+  $("select").change(function () {
+    $("option[value=" + $(this).val() + "]").attr("disabled", "disabled");
+  });
+});

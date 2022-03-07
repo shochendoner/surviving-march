@@ -193,3 +193,8 @@ section .index-categories-rules {
   margin: 10px auto;
   cursor: pointer;
 }
+
+.select form {
+  background-color: #fff;
+  display: block;
+}

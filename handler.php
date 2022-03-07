@@ -1,17 +1,26 @@
-<?php
+<HTML>
 
-include "dbh.inc.php";
 
-if(isset($_POST) & !empty($_POST)){
-	$email = mysqli_real_escape_string($conn, $_POST['usersEmail']);
-	$sql = "SELECT * FROM `users` WHERE usersEmail = '$usersemail'";
-	$res = mysqli_query($conn, $sql);
-	$count = mysqli_num_rows($res);
-	if($count == 1){
-		echo "Send email to user with password";
-	}else{
-		echo "User name does not exist in database";
-	}
-}
 
-?>
+<select class="select1" name="select1" id="">
+  <option value="this is line 2">this is line 2</option>
+  <option value="this is line line">this is line line</option>
+  <option value="this is line fine">this is line fine</option>
+  <option value="help me">help me</option>
+</select><select class="select2" name="" id="">
+  <option value="this is line 2">this is line 2</option>
+  <option value="this is line line">this is line line</option>
+  <option value="this is line fine">this is line fine</option>
+  <option value="help me">help me</option>
+</select>
+<script>
+$('.select1').on('change',function(){
+ var optionInSelect2 = $('.select2').find('option[value='+$(this).val()+']');
+ if(optionInSelect2.length) {
+   		$('.select2 option').removeAttr('disabled');
+   		optionInSelect2.attr('disabled','disabled');
+  }
+});
+</script>
+
+</HTML>

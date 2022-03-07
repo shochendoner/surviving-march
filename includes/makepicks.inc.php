@@ -24,8 +24,7 @@ if (isset($_POST["submit"])) {
   // Now we insert the user into the database
   makePicks($conn, $pickOne, $pickTwo, $id);
 
-} else {
+} 
 	header("location: ../makepicks.php");
     exit();
-}
 }
