@@ -184,64 +184,42 @@ li {
   font-family: "Roboto", sans-serif;
   display: block;
 }
-.custom-select {
-  position: relative;
-  font-family: Arial;
-}
 
-.custom-select select {
-  display: none; /*hide original SELECT element:*/
-}
-
-.select-selected {
-  background-color: DodgerBlue;
-}
-
-/*style the arrow inside the select element:*/
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-/*point the arrow upwards when the select box is open (active):*/
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
-/*style the items (options), including the selected item:*/
-.select-items div,
-.select-selected {
-  color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+.select-picks form {
+  background-color: #fff;
+  display: grid;
+  padding: 20px;
+  margin: auto;
   cursor: pointer;
-  user-select: none;
+  border-style: solid;
+  border-color: #007ecc;
+  border-width: 10px;
 }
 
-/*style items (options):*/
-.select-items {
-  position: absolute;
-  background-color: DodgerBlue;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
+.select-picks form option {
+  padding-top: 10px;
 }
 
-/*hide the items when the select box is closed:*/
-.select-hide {
-  display: none;
+.select-picks form button {
+  font-size: 15px;
+  font-weight: 100;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: #fff !important;
+  background: #007ecc;
+  border-radius: 20px;
+  line-height: 38px;
+  padding-top: 10px;
+  padding: 10px 40px;
+  padding-block-start: 10px;
 }
 
-.select-items div:hover,
-.same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
+.select select {
+  padding-bottom: 30px;
+  height: 30px;
+}
+
+.select form-control {
+  padding: 20px;
+  padding-bottom: 10px;
 }

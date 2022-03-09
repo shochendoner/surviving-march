@@ -151,15 +151,3 @@ function makePicks($conn, $pickone, $picktwo, $id) {
 }
 
 
-  // Picks Error
-function wrongPicksEntry($pickone, $picktwo){
-	$result;
-		if (empty($pickone) || empty($picktwo)) {
-			$result = true;
-		}
-		else {
-			$result = false;
-		}
-		return $result;
-	}
-
