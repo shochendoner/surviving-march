@@ -23,7 +23,7 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="makepicks.php">Make Picks</a></li>
           <?php
-            if (isset($_SESSION["usersName"])) {
+            if (isset($_SESSION["usersName"]))  {
               echo "<li><a href='profile.php'>$_SESSION[usersName]</a></li>";
               echo "<li><a href='logout.php'>Logout</a></li>";
             }

@@ -1,23 +1,35 @@
 <?php
-  include_once 'header.php';
 
-  $client = new http\Client;
-  $request = new http\Client\Request;
-  
-  $request->setRequestUrl('https://api-basketball.p.rapidapi.com/games');
-  $request->setRequestMethod('GET');
-  $request->setQuery(new http\QueryString([
-      'season' => '2021-2022',
-      'league' => '116'
-  ]));
-  
-  $request->setHeaders([
-      'x-rapidapi-host' => 'api-basketball.p.rapidapi.com',
-      'x-rapidapi-key' => '0346387995msh2c1248af75d544ep175845jsn782b1a09581f'
-  ]);
-  
-  $client->enqueue($request)->send();
-  $response = $client->getResponse();
-  
-  echo $response->getBody();
- ?> 
+include_once "header.php";
+include("includes/dbh.inc.php");
+?>
+
+<section class="index-intro">
+<?php
+if(!isset($_SESSION['usersid'])){
+   echo "Not logged in : <a href=login.php>Login</a> |
+    <a href=signup.php>Signup Here</a></font> ";
+    exit;
+ }else{
+ }
+ if ($_SESSION["usersEmail"] = "shochendoner@gmail.com") {
+    echo "<a href=admin-page.php>Admin Page</a>";
+ }
+ else {}
+$sql = "SELECT usersEmail, pickOne, pickTwo FROM users";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<br> Email: ". $row["usersEmail"]. " Pick One: ". $row["pickOne"]. " " . $row["pickTwo"] . "<br>";
+    }
+} else {
+    echo "0 results";
+}
+?>
+</section>
+
+<?php
+  include_once 'footer.php';
+?>

@@ -129,6 +129,10 @@ li {
 .index-intro p {
   text-align: center;
 }
+.index-intro table {
+  row-gap: 20px;
+  column-gap: 20px;
+}
 
 .index-categories-list {
   display: flex;
