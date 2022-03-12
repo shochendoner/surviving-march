@@ -24,6 +24,31 @@ function invalidUid($username) {
 	return $result;
 }
 
+function usersEmailExists($conn, $email) {
+  $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+	 	header("location: ../signup.php?error=stmtfailed");
+		exit();
+	}
+
+	mysqli_stmt_bind_param($stmt, "ss", $email, $email);
+	mysqli_stmt_execute($stmt);
+
+	// "Get result" returns the results from a prepared statement
+	$resultData = mysqli_stmt_get_result($stmt);
+
+	if ($row = mysqli_fetch_assoc($resultData)) {
+		return $row;
+	}
+	else {
+		$result = false;
+		return $result;
+	}
+
+	mysqli_stmt_close($stmt);
+}	
+
 // Check invalid email
 function invalidEmail($email) {
 	$result;
@@ -72,7 +97,7 @@ function uidExists($conn, $username) {
 	}
 
 	mysqli_stmt_close($stmt);
-}
+}	
 
 // Insert new user into database
 function createUser($conn, $name, $email, $username, $pwd) {
@@ -146,7 +171,7 @@ function makePicks($conn, $pickone, $picktwo, $id) {
 	mysqli_stmt_bind_param($stmt, "sss", $pickone, $picktwo, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	header("location: ../makepicks.php?error=none");
+	header("location: ../profile.php");
 	exit();
 }
 

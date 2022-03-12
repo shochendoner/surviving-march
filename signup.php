@@ -20,6 +20,9 @@
       if ($_GET["error"] == "emptyinput") {
         echo "<p>Fill in all fields!</p>";
       }
+      else if ($_GET["error"] == "emailalreadyinuse") {
+        echo "<p>Email address already in use!</p>";
+      }
       else if ($_GET["error"] == "invaliduid") {
         echo "<p>Choose a proper username!</p>";
       }

@@ -25,6 +25,6 @@ if (isset($_POST["submit"])) {
   makePicks($conn, $pickOne, $pickTwo, $id);
 
 } 
-	header("location: ../makepicks.php");
+	header("location: ../profile.php");
     exit();
 }

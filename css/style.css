@@ -129,9 +129,33 @@ li {
 .index-intro p {
   text-align: center;
 }
-.index-intro table {
+.index-intro tbody {
   row-gap: 20px;
   column-gap: 20px;
+  border-inline-width: 5px;
+}
+
+.index-intro br {
+  border: #007ecc;
+  border-width: 10px;
+  text-align: center;
+  text-justify: auto;
+}
+
+.index-intro tr {
+  column-gap: 20px;
+  column-width: 50px;
+  border-collapse: separate;
+  text-indent: initial;
+  border-spacing: 10px;
+}
+.index-intro th {
+  padding-left: 10px;
+  justify-content: center;
+}
+.index-intro td {
+  padding-left: 10px;
+  justify-content: center;
 }
 
 .index-categories-list {
@@ -205,17 +229,22 @@ li {
 }
 
 .select-picks form button {
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 100;
   letter-spacing: 0;
   text-transform: capitalize;
   color: #fff !important;
   background: #007ecc;
   border-radius: 20px;
-  line-height: 38px;
+  line-height: 10px;
   padding-top: 10px;
   padding: 10px 40px;
   padding-block-start: 10px;
+}
+
+.select-picks select {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .select select {
@@ -226,4 +255,19 @@ li {
 .select form-control {
   padding: 20px;
   padding-bottom: 10px;
+}
+
+.table-responsive > .table-bordered {
+  border: 0;
+}
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+table {
+  border-collapse: collapse;
 }

@@ -9,26 +9,24 @@ if(!isset($_SESSION['usersid'])){
    exit;
 }else{
 }
-
 ?>
 <link rel="stylesheet" href="css/style.css">
 </section>
-
-
   <section class="index-intro">
   <?php
   include "dbh.inc.php";
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
-  $date2    = new DateTime("03/08/2022");
+  // DATE OF PICKS TO BE CHANGED
+  $date2    = new DateTime("03/16/2022");
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
 if ($date_now > $date2) {
     echo "Picks are Locked In for " . date("l  M d Y") . "<br>";
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
-
-      echo "<table border='1'>
+    
+      echo "<table>
       <tr>
       <th>Pick One</th>
       <th>Pick Two</th>
@@ -49,23 +47,36 @@ if ($date_now > $date2) {
       }else{
       }
 ?>
-  <h1>Make Your Selections</h1>
+
+  <h1>Make Your Selections for Day 1</h1>
   </section>
 <section class="matchups">
 </section>
         <div class="select-picks">
-              <form action="includes/makepicks.inc.php" method="POST">     
+              <form action="includes/makepicks.inc.php" method="POST">  
+              
               <select name="pickOne">
                 <option selected="pickOne">--Select Team One--</option>
                 <?php
                 include "dbh.inc.php";
-                $sql = "SELECT * FROM teams WHERE dayone = 'TRUE'";
+                $sql = "SELECT * FROM teams WHERE dayone = 'TRUE' ORDER BY seed";
                 $result = mysqli_query($conn, $sql);
                   while ($row = mysqli_fetch_array($result)){
-                    echo '<option value="'.$row['team_name'].'">'.$row['team_name'].'</option>';
+                    echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
                   }
                 ?>
               </select>  
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    var opt = {};
+    $("#pickOne > option").each(function () {
+        if(opt[$(this).text()]) {
+            $(this).remove();
+        } else {
+            opt[$(this).text()] = $(this).val();
+        }
+    });
+
+    </script>
                 <select name="pickTwo">
                 <option selected="pickTwo">--Select Team Two--</option>
               <?php
@@ -73,15 +84,11 @@ if ($date_now > $date2) {
               $sql = "SELECT * FROM teams WHERE dayone = 'TRUE'";
               $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)){
-                  echo '<option value="'.$row['team_name'].'">'.$row['team_name'].'</option>';
+                  echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
                 }
                 ?>
                 </select>
+                
                   <button type="submit" name="submit">Submit</button>
             </form>
               </div>
-              
-     
-<?php
-  include_once 'footer.php';
-?>

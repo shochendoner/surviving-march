@@ -41,6 +41,10 @@ if (isset($_POST["submit"])) {
     header("location: ../signup.php?error=usernametaken");
 		exit();
   }
+  if (usersEmailExists($conn, $email) !== false) {
+    header("location: ../signup.php?error=emailalreadyinuse");
+		exit();
+  }
 
   // If we get to here, it means there are no user errors
 
