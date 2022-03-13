@@ -73,13 +73,12 @@ if(!isset($_SESSION['usersid'])){
     echo "<a href=admin-page.php>Admin Page</a>";
  }
  else {}
-
+date_default_timezone_set('America/New_York');
 $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-$date2    = new DateTime("03/11/2022");
+$date2    = new DateTime("03/12/2022 19:30:00.000000");
 ?>
 <div class="view-own-picks">
-
 <link rel="stylesheet" href="tables.scss">
 <?php
 
