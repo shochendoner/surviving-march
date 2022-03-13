@@ -1,6 +1,7 @@
 <?php
   include_once 'header.php';
 ?>
+
 <section class="login-check">
 <?php
 if(!isset($_SESSION['usersid'])){
@@ -52,10 +53,11 @@ if ($date_now > $date2) {
   </section>
 <section class="matchups">
 </section>
+
         <div class="select-picks">
               <form action="includes/makepicks.inc.php" method="POST">  
               
-              <select name="pickOne">
+              <select name="pickOne" id="pickOne">
                 <option selected="pickOne">--Select Team One--</option>
                 <?php
                 include "dbh.inc.php";
@@ -66,22 +68,11 @@ if ($date_now > $date2) {
                   }
                 ?>
               </select>  
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    var opt = {};
-    $("#pickOne > option").each(function () {
-        if(opt[$(this).text()]) {
-            $(this).remove();
-        } else {
-            opt[$(this).text()] = $(this).val();
-        }
-    });
-
-    </script>
-                <select name="pickTwo">
+                <select name="pickTwo" id="pickTwo">
                 <option selected="pickTwo">--Select Team Two--</option>
               <?php
               include "dbh.inc.php";
-              $sql = "SELECT * FROM teams WHERE dayone = 'TRUE'";
+              $sql = "SELECT * FROM teams WHERE dayone = 'TRUE' ORDER BY seed";
               $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)){
                   echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
@@ -91,4 +82,22 @@ if ($date_now > $date2) {
                 
                   <button type="submit" name="submit">Submit</button>
             </form>
-              </div>
+          
+      <?php
+              if (isset($_GET["error"])) {
+              if ($_GET["error"] == "duplicateTeamsDayOne") {
+          echo "<p>Cannot choose the same team twice!</p>";
+        }
+        else if ($_GET["error"] == "none") {
+          echo "<p>Picks Submitted!</p>";
+      }
+    }
+    ?>
+    </div>
+  
+          
+<?php
+include_once 'footer.php';
+?>
+
+      

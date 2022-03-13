@@ -61,6 +61,17 @@ function invalidEmail($email) {
 	return $result;
 }
 
+function duplicateTeamsDayOne($pickOne, $pickTwo) {
+	$result;
+	if ($pickOne !== $pickTwo) {
+		$result = true;
+	}
+	else {
+		$result = false;
+	}
+	return $result;
+}
+
 // Check if passwords matches
 function pwdMatch($pwd, $pwdrepeat) {
 	$result;
