@@ -72,6 +72,9 @@ function duplicateTeamsDayOne($pickOne, $pickTwo) {
 	return $result;
 }
 
+
+
+
 // Check if passwords matches
 function pwdMatch($pwd, $pwdrepeat) {
 	$result;

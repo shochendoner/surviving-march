@@ -22,6 +22,7 @@
         <a href="index.php"><img src="img/logo-white.png"></a>
         <ul>
           <li><a href="index.php">Home</a></li>
+          <li><a href="rules.php">Rules</a></li>
           <li><a href="makepicks.php">Make Picks</a></li>
           <?php
             if (isset($_SESSION["usersName"]))  {

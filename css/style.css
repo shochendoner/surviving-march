@@ -129,7 +129,14 @@ li {
 .index-intro p {
   text-align: center;
 }
+
+.index-intro table {
+  height: auto;
+  justify-content: center;
+}
+
 .index-intro tbody {
+  justify-content: center;
   row-gap: 20px;
   column-gap: 20px;
   border-inline-width: 5px;
@@ -143,8 +150,7 @@ li {
 }
 
 .index-intro tr {
-  column-gap: 20px;
-  column-width: 50px;
+  column-width: auto;
   border-collapse: separate;
   text-indent: initial;
   border-spacing: 10px;
@@ -183,6 +189,10 @@ li {
 .signup-form-form {
   display: flex;
   justify-content: center;
+}
+
+.signup-form-form checkbox {
+  justify-content: left;
 }
 
 .signup-form p {
@@ -256,18 +266,18 @@ li {
   padding: 20px;
   padding-bottom: 10px;
 }
-
+.table-responsive tr {
+  height: 5px;
+}
 .table-responsive > .table-bordered {
-  border: 0;
+  border: 1;
 }
 .table-bordered {
   border: 1px solid #dee2e6;
+  height: 5px;
 }
-.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  color: #212529;
-}
-table {
-  border-collapse: collapse;
+
+.col-sm-8 {
+  display: block;
+  position: inherit;
 }

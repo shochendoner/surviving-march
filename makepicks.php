@@ -23,8 +23,10 @@ if(!isset($_SESSION['usersid'])){
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
-if ($date_now > $date2) {
-    echo "Picks are Locked In for " . date("l  M d Y") . "<br>";
+  if ($date_now > $date2) {
+    $d=mktime(12, 15, 54, 3, 17, 2022);
+ echo "Picks will be locked in for Day 1 at " . date("M-d-Y h:i:a", $d);
+     
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
       echo "<table>
