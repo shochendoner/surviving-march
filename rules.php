@@ -9,9 +9,26 @@
 </section>
 <div class="rules">
 <section class="index-categories">
+  
   <h2>Game Rules</h2>
   <h3>IMPORTANT: This game has no monetary reward associated with it and is simply for entertainment purposes.</h3>
+  <style>
+    p {
+      text-align: center;
+      padding-top: 5px;
+     
+    }
+    </style>
+  <p>Please read our <a href="tos.php">Terms and Conditions</a> before signing up</p>
 </section>
+<style>
+
+  .rules-text-01 {
+    background-color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  </style>
 <section class="rules-text-01">
     
       <ol>

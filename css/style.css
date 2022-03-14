@@ -93,8 +93,6 @@ nav ul li a:hover {
 
 section {
   background-color: #fff;
-  width: 94%;
-  padding: 10px 3%;
 }
 
 li {
@@ -120,7 +118,7 @@ li {
 
 .login-check {
   display: block;
-  justify-content: left;
+  justify-content: center;
   font-family: "Roboto", sans-serif;
 }
 
@@ -280,4 +278,10 @@ li {
 .col-sm-8 {
   display: block;
   position: inherit;
+}
+
+.login-check {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400px;
 }

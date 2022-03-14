@@ -3,10 +3,6 @@
 
   include_once 'header.php';
 ?>
-<section class="index-intro">
-  </section>
-
-<section class="rules-text-01">
 <style>
   h1 {
 font-size: 30px;
@@ -17,7 +13,18 @@ font-size: 30px;
   ul {
     font-size: 80%;
   }
+  section {
+  padding-left: 20px;
+  padding-right: 20px
+  padding-bottom: 20px;
+
+  }
   </style>
+<section class="index-intro">
+  </section>
+
+<section class="rules-text-01">
+
 <h1>Terms and Conditions of Use</h1>
 
 <h2>1. Terms</h2>

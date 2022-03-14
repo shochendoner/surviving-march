@@ -84,8 +84,9 @@ if(!isset($_SESSION['usersid'])){
                 
                   <button type="submit" name="submit">Submit</button>
             </form>
-          
+            </div>
       <?php
+          // error messages
               if (isset($_GET["error"])) {
               if ($_GET["error"] == "duplicateTeamsDayOne") {
           echo "<p>Cannot choose the same team twice!</p>";
@@ -95,7 +96,7 @@ if(!isset($_SESSION['usersid'])){
       }
     }
     ?>
-    </div>
+    
   
           
 <?php

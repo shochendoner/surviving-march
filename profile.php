@@ -9,6 +9,19 @@ include("developer.php");
 body {
   background-color: #333333;
 }
+
+h2 {
+   margin-top: 0px;
+    padding-top: revert;
+}
+
+section {
+   width: -webkit-fill-available;
+    padding: 10px 3%;
+    text-align: center;
+    justify-content: center;
+    margin-left: 20px;
+}
 .wrapper {
   width: 900px;
   margin: 0 auto;
@@ -29,6 +42,17 @@ nav .wrapper {
   text-align: center;
 }
 
+.section{
+   display: block;
+    margin: auto;
+    justify-content: normal;
+    align-content: center;
+    table-layout: auto;
+    inline-size: -webkit-fill-available;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
 nav img {
   width: 60px;
 }
@@ -70,13 +94,12 @@ nav ul li a:hover {
    height: 15px;
    display: 
 }
-.section{
-   display: block;
-    margin: auto;
-    justify-content: normal;
-    align-content: center;
-    table-layout: auto;
-    inline-size: -webkit-fill-available;
+
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
 }
 </style>
 <section class="index-intro">
@@ -112,10 +135,10 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
 /* change for day 2  */
       while($row = mysqli_fetch_array($result))
       {
-      echo "<h2>";
+      
       echo "<br>" . $row['pickOne'] . "</br>";
       echo "<td>" . $row['pickTwo'] . "</td>";
-      echo "</h2>";
+      
       }
       echo "</table>";
 
