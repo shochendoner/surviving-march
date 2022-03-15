@@ -82,10 +82,10 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
 /* change for day 2  */
       while($row = mysqli_fetch_array($result))
       {
-      
+      echo "<h2>";
       echo "<br>" . $row['pickOne'] . "</br>";
       echo "<td>" . $row['pickTwo'] . "</td>";
-      
+      echo "</h2>";
       }
       echo "</table>";
 
