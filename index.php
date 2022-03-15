@@ -110,7 +110,7 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
           <div class="table-responsive">
             <table class="table table-bordered">
              
-               <th>Email</th>
+               <th>Username</th>
                <th>Day 1 Pick One</th>
                <th>Day 1 Pick Two</th>
                
