@@ -70,6 +70,7 @@ nav img {
 }
 
 nav ul {
+  padding-bottom: 5px;
 }
 
 nav ul li {
@@ -227,9 +228,6 @@ li {
   padding: 20px;
   margin: auto;
   cursor: pointer;
-  border-style: solid;
-  border-color: #007ecc;
-  border-width: 10px;
 }
 
 .select-picks form option {

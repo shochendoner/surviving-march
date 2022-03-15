@@ -12,6 +12,10 @@ include("developer.php");
 </section>
 <section class="login-check">
 <style>
+  ul {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 .login-check p {
 justify-content: center;
 }
@@ -35,7 +39,11 @@ if(!isset($_SESSION['usersid'])){
 }else{ 
 }
 ?>
+
 <style>
+  h2{
+    margin-top: -20px;
+  }
 .login-check p {
 justify-content: center;
 }
@@ -52,7 +60,7 @@ justify-content: center;
 <link rel="stylesheet" href="css/style.css">
 
 </section>
-<div class="container">
+<div class="container" style="text-align: -webkit-center;">
  <div class="row" style="display:contents">
    <div class="col-sm-8">
  
@@ -92,10 +100,10 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
 /* change for day 2  */
       while($row = mysqli_fetch_array($result))
       {
-      echo "<h3>";
+      echo "<h2>";
       echo "<br>" . $row['pickOne'] . "</br>";
       echo "<td>" . $row['pickTwo'] . "</td>";
-      echo "</h3>";
+      echo "</h2>";
       }
       echo "</table>";
           echo $deleteMsg??''; ?>
@@ -114,7 +122,7 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
             foreach($fetchData as $data){
           ?>
             <tr>
-            <td><?php echo $data['usersEmail']??''; ?></td>
+            <td><?php echo $data['usersuid']??''; ?></td>
             <td><?php echo $data['pickOne']??''; ?></td>
             <td><?php echo $data['pickTwo']??''; ?></td>
            </tr>

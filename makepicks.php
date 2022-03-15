@@ -53,12 +53,10 @@ if(!isset($_SESSION['usersid'])){
 
   <h1>Make Your Selections for Day 1</h1>
   </section>
-<section class="matchups">
-</section>
-
+<section>
         <div class="select-picks">
+        <h3 style="font-size: x-large;">Do not select the same team twice!</h3>
               <form action="includes/makepicks.inc.php" method="POST">  
-              
               <select name="pickOne" id="pickOne">
                 <option selected="pickOne">--Select Team One--</option>
                 <?php
@@ -81,22 +79,19 @@ if(!isset($_SESSION['usersid'])){
                 }
                 ?>
                 </select>
-                
                   <button type="submit" name="submit">Submit</button>
             </form>
-            </div>
-      <?php
-          // error messages
-              if (isset($_GET["error"])) {
-              if ($_GET["error"] == "duplicateTeamsDayOne") {
-          echo "<p>Cannot choose the same team twice!</p>";
-        }
-        else if ($_GET["error"] == "none") {
-          echo "<p>Picks Submitted!</p>";
+            
+      </div>
+    <?php
+    // Error messages
+    if (isset($_GET["error"])) {
+      if ($_GET["error"] == "duplicateTeamsDayOne") {
+        echo "<p>Fill in all fields!</p>";
       }
     }
-    ?>
-    
+  ?>
+  </section>
   
           
 <?php

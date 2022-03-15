@@ -185,7 +185,7 @@ function makePicks($conn, $pickone, $picktwo, $id) {
 	mysqli_stmt_bind_param($stmt, "sss", $pickone, $picktwo, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	header("location: ../profile.php");
+	header("location: ../index.php");
 	exit();
 }
 
