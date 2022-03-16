@@ -39,7 +39,6 @@ if(!isset($_SESSION['usersid'])){
 }else{ 
 }
 ?>
-
 <style>
   h2{
     margin-top: -20px;
@@ -68,23 +67,21 @@ justify-content: center;
  $id = ($_SESSION['usersid']);
 date_default_timezone_set('America/New_York');
 $date_now = new DateTime();
-  // DATE OF PICKS TO BE CHANGED
-$date2    = new DateTime("03/17/2022 12:30:00.000000");
-/* change for day 2  */
+$date2    = new DateTime("03/18/2022 12:30:00.000000");
+
 if ($date_now < $date2) {
-   $d=mktime(12, 15, 54, 3, 17, 2022);
-echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
+   $d=mktime(12, 15, 54, 3, 18, 2022);
+echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
     
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
-      echo "<h3> Day 1 Picks
+      echo "<h3> Day 2 Picks
       </h3>";
-/* change for day 2  */
       while($row = mysqli_fetch_array($result))
       {
       echo "<h2>";
-      echo "<br>" . $row['pickOne'] . "</br>";
-      echo "<td>" . $row['pickTwo'] . "</td>";
+      echo "<br>" . $row['pickThree'] . "</br>";
+      echo "<br>" . $row['pickFour'] . "</br>";
       echo "</h2>";
       }
       echo "</table>";
@@ -93,26 +90,18 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
 
           exit;
       }else{}
-      $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
+      
     
-      echo "<h3> Day 1 Picks
-      </h3>";
-/* change for day 2  */
-      while($row = mysqli_fetch_array($result))
-      {
-      echo "<h2>";
-      echo "<br>" . $row['pickOne'] . "</br>";
-      echo "<td>" . $row['pickTwo'] . "</td>";
-      echo "</h2>";
-      }
-      echo "</table>";
-          echo $deleteMsg??''; ?>
+      
+       ?>
           <div class="table-responsive">
             <table class="table table-bordered">
              
                <th>Username</th>
                <th>Day 1 Pick One</th>
                <th>Day 1 Pick Two</th>
+               <th>Day 2 Pick One</th>
+               <th>Day 2 Pick Two</th>
                
           </thead>
           <tbody>
@@ -125,6 +114,8 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
             <td><?php echo $data['usersuid']??''; ?></td>
             <td><?php echo $data['pickOne']??''; ?></td>
             <td><?php echo $data['pickTwo']??''; ?></td>
+            <td><?php echo $data['pickThree']??''; ?></td>
+            <td><?php echo $data['pickFour']??''; ?></td>
            </tr>
            <?php
             $sn++;}}else{ ?>

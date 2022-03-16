@@ -19,13 +19,13 @@ if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-  $date2    = new DateTime("03/16/2022");
+  $date2    = new DateTime("03/18/2022");
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
   if ($date_now > $date2) {
-    $d=mktime(12, 15, 54, 3, 17, 2022);
- echo "Picks will be locked in for Day 1 at " . date("M-d-Y h:i:a", $d);
+    $d=mktime(12, 15, 54, 3, 18, 2022);
+ echo "Picks will be locked in for Day 2 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
@@ -38,8 +38,8 @@ if(!isset($_SESSION['usersid'])){
       while($row = mysqli_fetch_array($result))
       {
       echo "<tr>";
-      echo "<td>" . $row['pickOne'] . "</td>";
-      echo "<td>" . $row['pickTwo'] . "</td>";
+      echo "<td>" . $row['pickThree'] . "</td>";
+      echo "<td>" . $row['pickFour'] . "</td>";
       echo "</tr>";
       }
       echo "</table>";
@@ -51,28 +51,29 @@ if(!isset($_SESSION['usersid'])){
       }
 ?>
 
-  <h1>Make Your Selections for Day 1</h1>
+  <h1>Make Your Selections for Day 2</h1>
   </section>
 <section>
         <div class="select-picks">
         <h3 style="font-size: x-large;">Do not select the same team twice!</h3>
               <form action="includes/makepicks.inc.php" method="POST">  
-              <select name="pickOne" id="pickOne">
-                <option selected="pickOne">--Select Team One--</option>
+              <select name="pickThree" id="pickThree">
+                <option selected="pickThree">--Select Team One--</option>
                 <?php
                 include "dbh.inc.php";
-                $sql = "SELECT * FROM teams WHERE dayone = 'TRUE' ORDER BY seed";
+            
+                $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
                 $result = mysqli_query($conn, $sql);
                   while ($row = mysqli_fetch_array($result)){
                     echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
                   }
                 ?>
               </select>  
-                <select name="pickTwo" id="pickTwo">
-                <option selected="pickTwo">--Select Team Two--</option>
+                <select name="pickFour" id="pickFour">
+                <option selected="pickFour">--Select Team Two--</option>
               <?php
               include "dbh.inc.php";
-              $sql = "SELECT * FROM teams WHERE dayone = 'TRUE' ORDER BY seed";
+              $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
               $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)){
                   echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
@@ -83,14 +84,8 @@ if(!isset($_SESSION['usersid'])){
             </form>
             
       </div>
-    <?php
-    // Error messages
-    if (isset($_GET["error"])) {
-      if ($_GET["error"] == "duplicateTeamsDayOne") {
-        echo "<p>Fill in all fields!</p>";
-      }
-    }
-  ?>
+    
+    
   </section>
   
           

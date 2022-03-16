@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
   require_once "dbh.inc.php";
   require_once 'functions.inc.php';
   
-  if (duplicateTeamsDayOne($pickThree, $pickFour) !== true) {
+  if (duplicateTeamsDayTwo($pickThree, $pickFour) !== true) {
     header("location: ../makepicks.php?error=duplicateteams");
 		exit();
   }
@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
   // If we get to here, it means there are no user errors
 
   // Now we insert the user into the database
-  makePicks($conn, $pickThree, $pickFour, $id);
+  makePicksDayTwo($conn, $pickThree, $pickFour, $id);
 
 } else {
 	header("index.php");
