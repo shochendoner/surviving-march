@@ -80,6 +80,7 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
       while($row = mysqli_fetch_array($result))
       {
       echo "<h2>";
+
       echo "<br>" . $row['pickThree'] . "</br>";
       echo "<br>" . $row['pickFour'] . "</br>";
       echo "</h2>";
@@ -87,12 +88,45 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
       echo "</table>";
 
       mysqli_close($conn);
-
+?>
+<div class="table-responsive">
+            <table class="table table-bordered">
+             
+               <th>Username</th>
+               <th>Day 1 Pick One</th>
+               <th>Day 1 Pick Two</th>
+          </thead>
+          <tbody>
+        <?php
+            if(is_array($fetchData)){      
+            $sn=1;
+            foreach($fetchData as $data){
+          ?>
+            <tr>
+            <td><?php echo $data['usersuid']??''; ?></td>
+            <td><?php echo $data['pickOne']??''; ?></td>
+            <td><?php echo $data['pickTwo']??''; ?></td>
+           </tr>
+           <?php
+            $sn++;}}else{ ?>
+            <tr>
+              <td colspan="8">
+          <?php echo $fetchData; ?>
+        </td>
+          <tr>
+          <?php
+          }?>
+          
+      
+          </tbody>
+           </table>
+         </div>
+<?php
           exit;
       }else{}
       
     
-      
+    
        ?>
           <div class="table-responsive">
             <table class="table table-bordered">
