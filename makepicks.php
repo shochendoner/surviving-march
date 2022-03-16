@@ -19,7 +19,11 @@ if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
+<<<<<<< HEAD
   $date2    = new DateTime("03/18/2022");
+=======
+  $date2    = new DateTime("03/17/2022");
+>>>>>>> 358b0b07f35d559adef72467a98829bf920d6a98
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
