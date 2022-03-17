@@ -69,7 +69,7 @@ justify-content: center;
 date_default_timezone_set('America/New_York');
 $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-$date2    = new DateTime("03/17/2022 12:30:00.000000");
+$date2    = new DateTime("03/17/2022 12:15:00.000000");
 /* change for day 2  */
 if ($date_now < $date2) {
    $d=mktime(12, 15, 54, 3, 17, 2022);
