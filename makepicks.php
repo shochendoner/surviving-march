@@ -16,6 +16,7 @@ if(!isset($_SESSION['usersid'])){
   <section class="index-intro">
   <?php
   include "dbh.inc.php";
+  date_default_timezone_set('America/New_York');
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
