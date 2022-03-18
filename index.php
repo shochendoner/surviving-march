@@ -1,5 +1,6 @@
 <!--Splitting the header and footer into separate documents makes things easier!-->
 <?php
+error_reporting(0);
 include_once "header.php";
   
 include("includes/dbh.inc.php");
