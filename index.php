@@ -132,9 +132,29 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
 <?php
           exit;
       }else{
-       ?>
+        $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
+    
+      echo "<h3> Day 2 Picks
+      </h3>";
+      while($row = mysqli_fetch_array($result))
+      {
+      echo "<h2 style=font-size:24px;margin-bottom:10px;>";
+
+      echo "<br>" . $row['pickThree'] . "</br>";
+      echo "<br>" . $row['pickFour'] . "</br>";
+      if (($_SESSION["buybackdayone"] == 'TRUE'))  {
+        echo "<br>" . $row['pickFive'] . "</br>";
+        echo "<br>" . $row['pickSix'] . "</br>"; 
+      }else{
+      echo "</h2>";
+      }
+      echo "</table>";
+
+      mysqli_close($conn); }
+?> 
+       </div>
           <div class="table-responsive" style=margin-top:20px;display:contents;>
-            <table class="table table-bordered" style=margin-left:-30px;>
+            <table class="table table-bordered" style=margin-left:-30px;font-size: small;>
              
                <th>Username</th>
                <th>Day 1 Pick One</th>
