@@ -154,13 +154,13 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
 ?> 
        </div>
           <div class="table-responsive" style=margin-top:20px;display:contents;>
-            <table class="table table-bordered" style=margin-left:-30px;font-size: small;>
+            <table class="table table-bordered" style=margin-left:auto;font-size: small;>
              
                <th>Username</th>
-               <th>Day 1 Pick One</th>
-               <th>Day 1 Pick Two</th>
                <th>Day 2 Pick One</th>
                <th>Day 2 Pick Two</th>
+               <th>Day 2 Extra One</th>
+               <th>Day 2 Extra Two</th>
                
           </thead>
           <tbody>
@@ -171,8 +171,6 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
           ?>
             <tr>
             <td><?php echo $data['usersuid']??''; ?></td>
-            <td><?php echo $data['pickOne']??''; ?></td>
-            <td><?php echo $data['pickTwo']??''; ?></td>
             <td><?php echo $data['pickThree']??''; ?></td>
             <td><?php echo $data['pickFour']??''; ?></td>
             <td><?php echo $data['pickFive']??''; ?></td>

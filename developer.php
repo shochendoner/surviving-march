@@ -7,7 +7,7 @@ include_once 'header.php';
 include "dbh.inc.php";
 $db= $conn;
 $tableName="users";
-$columns= ['usersuid', 'pickOne','pickTwo', 'pickThree', 'pickFour'];
+$columns= ['usersuid', 'eliminated', 'pickOne','pickTwo', 'pickThree', 'pickFour', 'pickFive', 'pickSix'];
 $fetchData = fetch_data($db, $tableName, $columns);
 
 function fetch_data($db, $tableName, $columns){
@@ -20,7 +20,7 @@ function fetch_data($db, $tableName, $columns){
 }else{
 
 $columnName = implode(", ", $columns);
-$query = "SELECT ".$columnName." FROM $tableName"."";
+$query = "SELECT ".$columnName." FROM $tableName"." WHERE users.eliminated!=('TRUE')";
 $result = $db->query($query);
 
 if($result== true){ 
