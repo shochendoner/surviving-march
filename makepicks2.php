@@ -9,32 +9,13 @@ if(!isset($_SESSION['usersid'])){
    <a href=signup.php>Signup Here</a></font> ";
    exit;
 }else{
-  
-
-  }
-
+}
 ?>
 <link rel="stylesheet" href="css/style.css">
 </section>
   <section class="index-intro">
-    <style>
-      img{
-        display: flex;
-        margin: auto;
-      }
-      h1{
-        line-height: 50px;
-      }
-      </style>
   <?php
   include "dbh.inc.php";
-  if (($_SESSION['eliminated'] == 'TRUE'))  {
-    echo "<h1 > You've Been Eliminated from the 2022 Surviving March Contest</h1>
-    <h3>Thanks for playing
-      </h3>";
-    echo "<img src='/img/coachk.jpeg'>";
-    exit;
-   } else{}
   date_default_timezone_set('America/New_York');
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
@@ -44,15 +25,15 @@ if(!isset($_SESSION['usersid'])){
   $result = mysqli_query($conn, $sql);
 
   if ($date_now > $date2) {
-    $d=mktime(12, 15, 54, 3, 18, 2022);
+    $d=mktime(12, 15, 00, 3, 18, 2022);
  echo "Picks will be locked in for Day 1 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
       echo "<table>
       <tr>
-      <th>Pick Three</th>
-      <th>Pick Four</th>
+      <th>Pick One</th>
+      <th>Pick Two</th>
       </tr>";
 
       while($row = mysqli_fetch_array($result))
@@ -76,7 +57,7 @@ if(!isset($_SESSION['usersid'])){
 <section>
         <div class="select-picks">
         <h3 style="font-size: x-large;">Do not select the same team twice!</h3>
-              <form action="includes/makepicks.inc.php" method="POST">  
+              <form action="includes/makepicks2.inc.php" method="POST">  
               <select name="pickThree" id="pickThree">
                 <option selected="pickThree">--Select Team One--</option>
                 <?php
@@ -99,11 +80,32 @@ if(!isset($_SESSION['usersid'])){
                 }
                 ?>
                 </select>
+                <select name="pickFive" id="pick">
+                <option selected="pickFive">--Select Team Three--</option>
+              <?php
+              include "dbh.inc.php";
+              $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+              $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($result)){
+                  echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
+                }
+                ?>
+                </select>
+                <select name="pickSix" id="pickSix">
+                <option selected="pickSix">--Select Team Four--</option>
+              <?php
+              include "dbh.inc.php";
+              $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+              $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($result)){
+                  echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
+                }
+                ?>
+                </select>
                   <button type="submit" name="submit">Submit</button>
             </form>
             
       </div>
-   
   </section>
   
           

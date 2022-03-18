@@ -1,8 +1,8 @@
 <?php
   session_start();
   include_once 'includes/functions.inc.php';
+    
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -24,7 +24,13 @@
         <ul>
           <li><a href="index.php">Home</a></li>
           <li><a href="rules.php">Rules</a></li>
-          <li><a href="makepicks.php">Make Picks</a></li>
+          <?php
+          if (($_SESSION["buybackdayone"] == 'TRUE'))  {
+            echo "<li><a href='makepicks2.php'>Make Picks</a></li>";
+            }
+            else {
+              echo "<li><a href='makepicks.php'>Make Picks</a></li>";
+            } ?>
           <?php
             if (isset($_SESSION["usersName"]))  {
               echo "<li><a href='logout.php'>Logout</a></li>";
@@ -33,10 +39,13 @@
               echo "<li><a href='signup.php'>Sign up</a></li>";
               echo "<li><a href='login.php'>Log in</a></li>";
             }
+  
           ?>
         </ul>
+          
       </div>
-    </nav>
 
+    </nav>
+          
 <!--A quick wrapper to align the content (ends in footer.php)-->
 <div class="wrapper">

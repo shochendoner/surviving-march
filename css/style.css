@@ -278,6 +278,10 @@ li {
   position: inherit;
 }
 
+.col-sm-8 h2 {
+  font-size: 16px;
+}
+
 .login-check {
   text-align: center;
   font-size: 20px;

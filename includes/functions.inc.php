@@ -1,5 +1,4 @@
 <?php
-
 // Check for empty input signup
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) {
 	$result;
@@ -49,6 +48,9 @@ function usersEmailExists($conn, $email) {
 	mysqli_stmt_close($stmt);
 }	
 
+
+
+
 // Check invalid email
 function invalidEmail($email) {
 	$result;
@@ -73,6 +75,17 @@ function duplicateTeamsDayOne($pickThree, $pickFour) {
 }
 
 function duplicateTeamsDayTwo($pickThree, $pickFour) {
+	$result;
+	if ($pickThree !== $pickFour) {
+		$result = true;
+	}
+	else {
+		$result = false;
+	}
+	return $result;
+}
+
+function duplicateTeamsDayTwoFourPicks($pickThree, $pickFour, $pickFive, $pickSix) {
 	$result;
 	if ($pickThree !== $pickFour) {
 		$result = true;
@@ -142,6 +155,8 @@ function createUser($conn, $name, $email, $username, $pwd) {
 	exit();
 }
 
+
+
 // Check for empty input login
 function emptyInputLogin($username, $pwd) {
 	$result;
@@ -175,6 +190,8 @@ function loginUser($conn, $username, $pwd) {
 		$_SESSION["usersid"] = $uidExists["usersid"];
 		$_SESSION["useruid"] = $uidExists["usersUid"];
 		$_SESSION["usersName"] = $uidExists["usersName"];
+		$_SESSION["buybackdayone"] = $uidExists["buybackdayone"];
+		$_SESSION["eliminated"] = $uidExists["eliminated"];
 		header("location: ../index.php?error=none");
 		exit();
 	}
@@ -198,5 +215,25 @@ function makePicks($conn, $pickThree, $pickFour, $id) {
 	exit();
 }
 
+function makePicksDayTwoExtraTwo($conn, $pickThree, $pickFour, $pickFive, $pickSix, $id) {
+	$sql = "INSERT INTO users (pickThree, pickFour, pickFive, pickSix, usersid)
+	VALUES (?, ?, ?, ?, ?)
+	ON DUPLICATE KEY UPDATE
+			pickThree = VALUES(pickThree),
+			pickFour = VALUES(pickFour),
+			pickFive = VALUES(pickFive),
+			pickSix = VALUES(pickSix)";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+	 	header("location: ../makepicks2.php?error=stmtfailed");
+		exit();
+	}
+	mysqli_stmt_bind_param($stmt, "sssss", $pickThree, $pickFour, $pickFive, $pickSix, $id);
+	mysqli_stmt_execute($stmt);
+	mysqli_stmt_close($stmt);
+	header("location: ../index.php");
+	exit();
+}
 
+?>
 

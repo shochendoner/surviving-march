@@ -1,5 +1,5 @@
 <?php
-  include_once 'header.php';
+  include_once 'header2.php';
 ?>
 
 <section class="signup-form">

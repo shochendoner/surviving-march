@@ -2,6 +2,19 @@
 include("developer.php");
 include_once 'header.php';
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/myjs.js"></script>
+<?php
+
+// do check
+if ($_SESSION["usersid"] == '1') {
+}
+else{
+    exit; // prevent further execution, should there be more code that follows
+}
+?>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
@@ -120,23 +133,70 @@ echo "Picks will be locked in for Day 1 on " . date("M-d-Y h:i:a", $d);
     
       <table class="table table-bordered">
        
-         <th>Email</th>
+         <th>Username</th>
          <th>Day 1 Pick One</th>
          <th>Day 1 Pick Two</th>
+         <th>Day 1 Win</th>
+         <th>Day 1 Loss</th>
     </thead>
+<?php
+$i = 1;
+$qry = "SELECT * from users";
+$run = $conn -> query($qry);
+if($run -> num_rows > 0){
+    while($row = $run -> fetch_assoc()){
+      $id = $row['usersid'];
+    }
+  }
+?>
     <tbody>
+
+    
   <?php
       if(is_array($fetchData)){      
       $sn=1;
+      
       foreach($fetchData as $data){
     ?>
-
-
       <tr>
-      <td><?php echo $data['usersEmail']??''; ?></td>
+      <td><?php echo $data['usersuid']??'';?></td>
       <td><?php echo $data['pickOne']??''; ?></td>
       <td><?php echo $data['pickTwo']??''; ?></td>
+      <td><input class='btn' type="button" id = "saveusers" value = "Save"></td>
      </tr>
+     
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        $("#saveusers").on('click', function(){
+            var usersuid  = $("#usersuid").val();
+            var dayonewin   = $("#dayonewin").val();
+            $.ajax({
+              method: "POST",
+              url:    "win.php",
+              data: { "usersuid": usersuid, "dayonewin": dayonewin},
+             }).done(function( data ) {
+                var result = $.parseJSON(data);
+                var str = '';
+                var cls = '';
+                if(result == 1) {
+                  str = 'User record saved successfully.';
+                  cls = 'success';
+                }else if( result == 2) {
+                  str = 'All fields are required.';
+                  cls = 'error';
+                }else if( result == 3) {
+                  str = 'Enter a valid email address.';
+                  cls = 'error';
+                }else{
+                  str = 'User data could not be saved. Please try again';
+                  cls = 'error';
+                }
+              $("#message").show(3000).html(str).addClass('success').hide(5000);
+          });
+       });
+     });
+  </script>
      <?php
       $sn++;}}else{ ?>
       <tr>

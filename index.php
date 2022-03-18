@@ -1,6 +1,7 @@
 <!--Splitting the header and footer into separate documents makes things easier!-->
 <?php
 include_once "header.php";
+  
 include("includes/dbh.inc.php");
 include("developer.php");
 ?>
@@ -60,6 +61,7 @@ justify-content: center;
 
 </section>
 <div class="container" style="text-align: -webkit-center;">
+
  <div class="row" style="display:contents">
    <div class="col-sm-8">
  
@@ -70,7 +72,7 @@ $date_now = new DateTime();
 $date2    = new DateTime("03/18/2022 12:30:00.000000");
 
 if ($date_now < $date2) {
-   $d=mktime(12, 15, 54, 3, 18, 2022);
+   $d=mktime(12, 15, 00, 3, 18, 2022);
 echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
     
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
@@ -79,18 +81,22 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
       </h3>";
       while($row = mysqli_fetch_array($result))
       {
-      echo "<h2>";
+      echo "<h2 style=font-size:24px;margin-bottom:10px;>";
 
       echo "<br>" . $row['pickThree'] . "</br>";
       echo "<br>" . $row['pickFour'] . "</br>";
+      if (($_SESSION["buybackdayone"] == 'TRUE'))  {
+        echo "<br>" . $row['pickFive'] . "</br>";
+        echo "<br>" . $row['pickSix'] . "</br>"; 
+      }else{
       echo "</h2>";
       }
       echo "</table>";
 
-      mysqli_close($conn);
-?>
-<div class="table-responsive">
-            <table class="table table-bordered">
+      mysqli_close($conn); }
+?> 
+<div class="table-responsive" style=margin-top:20px;>
+            <table class="table table-bordered" style=font-size:16px;>
              
                <th>Username</th>
                <th>Day 1 Pick One</th>
@@ -106,6 +112,7 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
             <td><?php echo $data['usersuid']??''; ?></td>
             <td><?php echo $data['pickOne']??''; ?></td>
             <td><?php echo $data['pickTwo']??''; ?></td>
+      
            </tr>
            <?php
             $sn++;}}else{ ?>
@@ -168,7 +175,7 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
       </div>
       </div>
       </div>
-         
+    
 <?php
   include_once 'footer.php';
 ?>
