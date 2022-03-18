@@ -64,13 +64,13 @@ justify-content: center;
 <div class="container" style="text-align: -webkit-center;">
 
  <div class="row" style="display:contents">
-   <div class="col-sm-8">
+   <div class="col-sm-8" style=margin-left:auto;margin-right:auto;>
  
  <?php
  $id = ($_SESSION['usersid']);
 date_default_timezone_set('America/New_York');
 $date_now = new DateTime();
-$date2    = new DateTime("03/18/2022 12:30:00.000000");
+$date2    = new DateTime("03/18/2022 12:15:00.000000");
 
 if ($date_now < $date2) {
    $d=mktime(12, 15, 00, 3, 18, 2022);
@@ -96,7 +96,7 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
 
       mysqli_close($conn); }
 ?> 
-<div class="table-responsive" style=margin-top:20px;>
+<div class="table-responsive" style=margin-top:20px;display:contents;>
             <table class="table table-bordered" style=font-size:16px;>
              
                <th>Username</th>
@@ -131,13 +131,10 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
          </div>
 <?php
           exit;
-      }else{}
-      
-    
-    
+      }else{
        ?>
-          <div class="table-responsive">
-            <table class="table table-bordered">
+          <div class="table-responsive" style=margin-top:20px;display:contents;>
+            <table class="table table-bordered" style=margin-left:-30px;>
              
                <th>Username</th>
                <th>Day 1 Pick One</th>
@@ -158,6 +155,8 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
             <td><?php echo $data['pickTwo']??''; ?></td>
             <td><?php echo $data['pickThree']??''; ?></td>
             <td><?php echo $data['pickFour']??''; ?></td>
+            <td><?php echo $data['pickFive']??''; ?></td>
+            <td><?php echo $data['pickSix']??''; ?></td>
            </tr>
            <?php
             $sn++;}}else{ ?>
@@ -169,7 +168,7 @@ echo "Picks will be locked in for Day 2 on " . date("M-d-Y h:i:a", $d);
           <?php
           }?>
           
-      
+      <?php } ?>
           </tbody>
            </table>
          </div>
