@@ -23,15 +23,18 @@ if(!isset($_SESSION['usersid'])){
         margin: auto;
       }
       h1{
+        font-size:40px;
         line-height: 50px;
+        margin-bottom: -10px;
       }
       </style>
   <?php
   include "dbh.inc.php";
   if (($_SESSION['eliminated'] == 'TRUE'))  {
-    echo "<h1 > You've Been Eliminated from the 2022 Surviving March Contest</h1>
+    echo "<h1> You've Been Eliminated from the 2022 Surviving March Contest</h1>
     <h3>Thanks for playing
       </h3>";
+      echo "<h2> Please follow along during the tournament <a href=index.php>here</a></h2>";
     echo "<img src='/img/coachk.jpeg'>";
     exit;
    } else{}
@@ -45,7 +48,7 @@ if(!isset($_SESSION['usersid'])){
 
   if ($date_now > $date2) {
     $d=mktime(12, 15, 54, 3, 18, 2022);
- echo "Picks will be locked in for Day 1 at " . date("M-d-Y h:i:a", $d);
+ echo "Picks will be locked in for Day 2 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
@@ -71,7 +74,7 @@ if(!isset($_SESSION['usersid'])){
       }
 ?>
 
-  <h1>Make Your Selections for Day 1</h1>
+  <h1>Make Your Selections for Day 2</h1>
   </section>
 <section>
         <div class="select-picks">
