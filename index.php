@@ -145,9 +145,9 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
       echo "<h2 style=font-size:24px;margin-bottom:10px;>";
 
       echo "<br>" . $row['pickSeven'] . "</br>";
-      echo "<br>" . $row['pickEight'] . "</br>";
       if (($_SESSION["buybackdaytwo"] == 'TRUE'))  {
-        echo "<br>" . $row['pickNine'] . "</br>";
+        echo "<br>" . $row['pickEight'] . "</br>";
+        echo "<br>" . $row['pickNine'] . "</br>"; 
         echo "<br>" . $row['pickTen'] . "</br>"; 
         echo "<br>" . $row['pickEleven'] . "</br>"; 
       }else{
