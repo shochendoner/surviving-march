@@ -235,18 +235,17 @@ function loginUser($conn, $username, $pwd) {
 	}
 
 }
-function makePicks($conn, $pickThree, $pickFour, $id) {
-	$sql = "INSERT INTO users (pickThree, pickFour, usersid)
-	VALUES (?, ?, ?)
+function makePicks($conn, $pickSeven, $id) {
+	$sql = "INSERT INTO users (pickSeven, usersid)
+	VALUES (?, ?)
 	ON DUPLICATE KEY UPDATE
-			pickThree = VALUES(pickThree),
-			pickFour = VALUES(pickFour)";
+			pickSeven = VALUES(pickSeven)";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 	 	header("location: ../makepicks.php?error=stmtfailed");
 		exit();
 	}
-	mysqli_stmt_bind_param($stmt, "sss", $pickThree, $pickFour, $id);
+	mysqli_stmt_bind_param($stmt, "ss", $pickSeven, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../index.php");

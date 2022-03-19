@@ -82,18 +82,19 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
       </h3>";
       while($row = mysqli_fetch_array($result))
       {
-      echo "<h2 style=font-size:24px;margin-bottom:10px;>";
+      echo "<h2 style=font-size:24px;margin-bottom:20px;>";
 
       echo "<br>" . $row['pickSeven'] . "</br>";
-      if (($_SESSION["buybackdaytwo"] == 'TRUE'))  {
+      if (($row["buybackdaytwo"] == 'TRUE'))  {
       echo "<br>" . $row['pickEight'] . "</br>";
-        echo "<br>" . $row['pickNine'] . "</br>";
-      }else{
+      echo "<br>" . $row['pickNine'] . "</br>";
+    }else{}}
       echo "</h2>";
-      }
+      
       echo "</table>";
-
-      mysqli_close($conn); }
+    
+      mysqli_close($conn); 
+    
 ?> 
 <div class="table-responsive" style=margin-top:20px;display:contents;>
             <table class="table table-bordered" style=font-size:16px;>
