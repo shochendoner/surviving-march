@@ -286,7 +286,7 @@ function makePicksDayThreeExtraThree($conn, $pickSeven, $pickEight, $pickNine, $
 	 	header("location: ../makepicks2.php?error=stmtfailed");
 		exit();
 	}
-	mysqli_stmt_bind_param($stmt, "ssssss", $pickThree, $pickFour, $pickFive, $pickSix, $id);
+	mysqli_stmt_bind_param($stmt, "ssssss", $pickSeven, $pickEight, $pickNine, $pickTen, $pickEleven, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../index.php");
