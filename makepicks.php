@@ -43,27 +43,25 @@ if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-  $date2    = new DateTime("03/19/2022 12:15:00");
+  $date2    = new DateTime("03/19/2022 12:00:00");
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
   if ($date_now > $date2) {
-    $d=mktime(12, 15, 54, 3, 19, 2022);
- echo "Picks will be locked in for Day 2 at " . date("M-d-Y h:i:a", $d);
+    $d=mktime(12, 00, 00, 3, 19, 2022);
+ echo "Picks will be locked in for Day 3 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
       echo "<table>
       <tr>
-      <th>Pick Three</th>
-      <th>Pick Four</th>
+      <th>Pick Day 3</th>
       </tr>";
 
       while($row = mysqli_fetch_array($result))
       {
       echo "<tr>";
       echo "<td>" . $row['pickSeven'] . "</td>";
-      echo "<td>" . $row['pickEight'] . "</td>";
       echo "</tr>";
       }
       echo "</table>";
@@ -97,17 +95,6 @@ if(!isset($_SESSION['usersid'])){
                   }
                 ?>
               </select>  
-                <select name="pickEight" id="pickEight">
-                <option selected="pickEight">--Select Team Two--</option>
-              <?php
-              include "dbh.inc.php";
-              $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
-              $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_array($result)){
-                  echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
-                }
-                ?>
-                </select>
                   <button type="submit" name="submit">Submit</button>
             </form>
             
@@ -134,10 +121,9 @@ if(!isset($_SESSION['usersid'])){
     echo "<br>" . $row['pickTwo'] . "</br>";
     echo "<br>" . $row['pickThree'] . "</br>";
     echo "<br>" . $row['pickFour'] . "</br>";
-    if (($row["buybackdayone"] == 'TRUE'))  {
-      echo "<br>" . $row['pickFive'] . "</br>";
-      echo "<br>" . $row['pickSix'] . "</br>"; 
-    }else{}}?>
+    echo "<br>" . $row['pickFive'] . "</br>";
+    echo "<br>" . $row['pickSix'] . "</br>"; 
+    }?>
   <div>
   <?php
 include "dbh.inc.php";
