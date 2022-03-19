@@ -10,6 +10,7 @@
     <meta charset="utf-8">
     <title>Surviving March</title>
     <!--I won't do more than barebone HTML, since this isn't an HTML tutorial.-->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
@@ -25,7 +26,7 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="rules.php">Rules</a></li>
           <?php
-          if (($_SESSION["buybackdayone"] == 'TRUE'))  {
+          if (($_SESSION["buybackdaytwo"] == 'TRUE'))  {
             echo "<li><a href='makepicks2.php'>Make Picks</a></li>";
             }
             else {

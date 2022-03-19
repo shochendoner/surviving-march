@@ -6,10 +6,11 @@ $id = $_SESSION['usersid'];
 if (isset($_POST["submit"])) {
 
   // First we get the form data from the URL
-  $pickThree = $_POST["pickThree"];
+  $pickSeven = $_POST["pickSeven"];
   $pickFour = $_POST["pickFour"];
-  $pickFive = $_POST["pickFive"];
-  $pickSix = $_POST["pickSix"];
+  $pickNine = $_POST["pickNine"];
+  $pickTen = $_POST["pickTen"];
+  $pickEleven = $_POST["pickEleven"];
   $id = $_SESSION['usersid'];
 
   // Then we run a bunch of error handlers to catch any user mistakes we can (you can add more than I did)
@@ -18,15 +19,15 @@ if (isset($_POST["submit"])) {
   require_once "dbh.inc.php";
   require_once 'functions.inc.php';
   
-  if (duplicateTeamsDayTwoFourPicks($pickThree, $pickFour, $pickFive, $pickSix) !== true) {
-    header("location: ../makepicks.php?error=duplicateteams");
+  if (duplicateTeamsDayTwoFourPicks($pickSeven, $pickEight, $pickNine, $pickTen, $pickEleven) !== true) {
+    header("location: ../makepicks2.php?error=duplicateteams");
 		exit();
   }
   
   // If we get to here, it means there are no user errors
 
   // Now we insert the user into the database
-  makePicksDayTwoExtraTwo($conn, $pickThree, $pickFour, $pickFive, $pickSix, $id);
+  makePicksDayThreeExtraThree($conn, $pickSeven, $pickEight, $pickNine, $pickTen, $pickEleven, $id);
 
 } else {
 	header("index.php");

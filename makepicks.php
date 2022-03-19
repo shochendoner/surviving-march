@@ -1,5 +1,6 @@
 <?php
   include_once 'header.php';
+  
 ?>
 
 <section class="login-check">
@@ -42,12 +43,12 @@ if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-  $date2    = new DateTime("03/18/2022 12:15:00");
+  $date2    = new DateTime("03/19/2022 12:15:00");
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
   if ($date_now > $date2) {
-    $d=mktime(12, 15, 54, 3, 18, 2022);
+    $d=mktime(12, 15, 54, 3, 19, 2022);
  echo "Picks will be locked in for Day 2 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
@@ -61,8 +62,8 @@ if(!isset($_SESSION['usersid'])){
       while($row = mysqli_fetch_array($result))
       {
       echo "<tr>";
-      echo "<td>" . $row['pickThree'] . "</td>";
-      echo "<td>" . $row['pickFour'] . "</td>";
+      echo "<td>" . $row['pickSeven'] . "</td>";
+      echo "<td>" . $row['pickEight'] . "</td>";
       echo "</tr>";
       }
       echo "</table>";
@@ -74,28 +75,33 @@ if(!isset($_SESSION['usersid'])){
       }
 ?>
 
-  <h1>Make Your Selections for Day 2</h1>
+  <h1>Make Your Selections for Day 3</h1>
   </section>
+  <?php
+
+
+  ?>
+  
 <section>
         <div class="select-picks">
         <h3 style="font-size: x-large;">Do not select the same team twice!</h3>
               <form action="includes/makepicks.inc.php" method="POST">  
-              <select name="pickThree" id="pickThree">
-                <option selected="pickThree">--Select Team One--</option>
+              <select name="pickSeven" id="pickSeven">
+                <option selected="pickSeven">--Select Team One--</option>
                 <?php
                 include "dbh.inc.php";
-                $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+                $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
                 $result = mysqli_query($conn, $sql);
                   while ($row = mysqli_fetch_array($result)){
                     echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
                   }
                 ?>
               </select>  
-                <select name="pickFour" id="pickFour">
-                <option selected="pickFour">--Select Team Two--</option>
+                <select name="pickEight" id="pickEight">
+                <option selected="pickEight">--Select Team Two--</option>
               <?php
               include "dbh.inc.php";
-              $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+              $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
               $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)){
                   echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
@@ -106,10 +112,44 @@ if(!isset($_SESSION['usersid'])){
             </form>
             
       </div>
-   
+      <?php
+      if (isset($_GET["error"])) {
+      if ($_GET["error"] == "survivorerror") {
+        echo "<p>Please Choose Teams You Have Not Chosen Before!</p>";
+      }
+      else{} }
+      ?>
   </section>
+  <section>
+    <?php
+  $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
+    
+    echo "<h3> ALL TEAMS PICKED
+    </h3>";
+    while($row = mysqli_fetch_array($result))
+    {
+    echo "<h2 style=font-size:24px;margin-bottom:10px;>";
+
+    echo "<br>" . $row['pickOne'] . "</br>";
+    echo "<br>" . $row['pickTwo'] . "</br>";
+    echo "<br>" . $row['pickThree'] . "</br>";
+    echo "<br>" . $row['pickFour'] . "</br>";
+    if (($row["buybackdayone"] == 'TRUE'))  {
+      echo "<br>" . $row['pickFive'] . "</br>";
+      echo "<br>" . $row['pickSix'] . "</br>"; 
+    }else{}}?>
+  <div>
+  <?php
+include "dbh.inc.php";
+$picksql = "SELECT pickOne, pickTwo, pickSeven, pickFour, pickFive, pickSix from users WHERE usersid = $id";
+$pickresult = mysqli_query($conn, $picksql);
+  while ($pickrow = mysqli_fetch_array($pickresult))
   
-          
+  ?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+  $("#pickSeven option[value='1 Baylor']").hide(); 
+</script>
+    </div>        
 <?php
 include_once 'footer.php';
 ?>

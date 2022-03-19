@@ -85,7 +85,18 @@ function duplicateTeamsDayTwo($pickThree, $pickFour) {
 	return $result;
 }
 
-function duplicateTeamsDayTwoFourPicks($pickThree, $pickFour, $pickFive, $pickSix) {
+function duplicateTeamsDayThree($pickSeven, $pickEight) {
+	$result;
+	if ($pickSeven !== $pickEight) {
+		$result = true;
+	}
+	else {
+		$result = false;
+	}
+	return $result;
+}
+
+function duplicateTeamsDayTwoFourPicks($pickSeven, $pickEight, $pickNine, $pickTen, $pickEleven) {
 	$result;
 	if ($pickThree !== $pickFour) {
 		$result = true;
@@ -108,6 +119,33 @@ function pwdMatch($pwd, $pwdrepeat) {
 	}
 	return $result;
 }
+
+function picksExist($conn, $id, $pickSeven, $pickEight) {
+  $sql = "SELECT * FROM users WHERE usersUid = $id AND pickOne = ?;";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+	 	header("location: ../makepicks.php?error=survivorerror");
+		exit();
+	}
+
+	mysqli_stmt_bind_param($stmt, "sss", $pickSeven, $pickEight);
+	mysqli_stmt_execute($stmt);
+
+	// "Get result" returns the results from a prepared statement
+	$resultData = mysqli_stmt_get_result($stmt);
+
+	if ($row = mysqli_fetch_assoc($resultData)) {
+		return $row;
+	}
+	else {
+		$result = false;
+		return $result;
+	}
+
+	mysqli_stmt_close($stmt);
+}
+
+
 
 // Check if username is in database, if so then return data
 function uidExists($conn, $username) {
@@ -190,7 +228,7 @@ function loginUser($conn, $username, $pwd) {
 		$_SESSION["usersid"] = $uidExists["usersid"];
 		$_SESSION["useruid"] = $uidExists["usersUid"];
 		$_SESSION["usersName"] = $uidExists["usersName"];
-		$_SESSION["buybackdayone"] = $uidExists["buybackdayone"];
+		$_SESSION["buybackdaytwo"] = $uidExists["buybackdaytwo"];
 		$_SESSION["eliminated"] = $uidExists["eliminated"];
 		header("location: ../index.php?error=none");
 		exit();
@@ -229,6 +267,27 @@ function makePicksDayTwoExtraTwo($conn, $pickThree, $pickFour, $pickFive, $pickS
 		exit();
 	}
 	mysqli_stmt_bind_param($stmt, "sssss", $pickThree, $pickFour, $pickFive, $pickSix, $id);
+	mysqli_stmt_execute($stmt);
+	mysqli_stmt_close($stmt);
+	header("location: ../index.php");
+	exit();
+}
+
+function makePicksDayThreeExtraThree($conn, $pickSeven, $pickEight, $pickNine, $pickTen, $pickEleven, $id) {
+	$sql = "INSERT INTO users (pickSeven, pickEight, pickNine, pickTen, pickEleven, usersid)
+	VALUES (?, ?, ?, ?, ?, ?)
+	ON DUPLICATE KEY UPDATE
+			pickSeven = VALUES(pickSeven),
+			pickEight = VALUES(pickEight),
+			pickNine = VALUES(pickNine),
+			pickTen = VALUES(pickTen),
+			pickEleven = VALUES(pickEleven)";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+	 	header("location: ../makepicks2.php?error=stmtfailed");
+		exit();
+	}
+	mysqli_stmt_bind_param($stmt, "ssssss", $pickThree, $pickFour, $pickFive, $pickSix, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../index.php");

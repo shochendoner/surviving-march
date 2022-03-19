@@ -20,13 +20,13 @@ if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-  $date2    = new DateTime("03/18/2022 12:15:00");
+  $date2    = new DateTime("03/19/2022 12:15:00");
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
   if ($date_now > $date2) {
-    $d=mktime(12, 15, 00, 3, 18, 2022);
- echo "Picks will be locked in for Day 1 at " . date("M-d-Y h:i:a", $d);
+    $d=mktime(12, 15, 00, 3, 19, 2022);
+ echo "Picks will be locked in for Day 3 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
@@ -39,8 +39,10 @@ if(!isset($_SESSION['usersid'])){
       while($row = mysqli_fetch_array($result))
       {
       echo "<tr>";
-      echo "<td>" . $row['pickThree'] . "</td>";
-      echo "<td>" . $row['pickFour'] . "</td>";
+      echo "<td>" . $row['pickSeven'] . "</td>";
+      echo "<td>" . $row['pickEight'] . "</td>";
+      echo "<td>" . $row['pickNine'] . "</td>";
+      echo "<td>" . $row['pickTen'] . "</td>";
       echo "</tr>";
       }
       echo "</table>";
@@ -52,50 +54,61 @@ if(!isset($_SESSION['usersid'])){
       }
 ?>
 
-  <h1>Make Your Selections for Day 1</h1>
+  <h1>Make Your Selections for Day 3</h1>
   </section>
 <section>
         <div class="select-picks">
         <h3 style="font-size: x-large;">Do not select the same team twice!</h3>
               <form action="includes/makepicks2.inc.php" method="POST">  
-              <select name="pickThree" id="pickThree">
-                <option selected="pickThree">--Select Team One--</option>
+              <select name="pickSeven" id="pickSeven">
+                <option selected="pickSeven">--Select Team One--</option>
                 <?php
                 include "dbh.inc.php";
-                $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+                $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
                 $result = mysqli_query($conn, $sql);
                   while ($row = mysqli_fetch_array($result)){
                     echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
                   }
                 ?>
               </select>  
-                <select name="pickFour" id="pickFour">
-                <option selected="pickFour">--Select Team Two--</option>
+                <select name="pickEight" id="pickEight">
+                <option selected="pickEight">--Select Team Two--</option>
               <?php
               include "dbh.inc.php";
-              $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+              $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
               $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)){
                   echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
                 }
                 ?>
                 </select>
-                <select name="pickFive" id="pick">
-                <option selected="pickFive">--Select Team Three--</option>
+                <select name="pickNine" id="pickNine">
+                <option selected="pickNine">--Select Extra One--</option>
               <?php
               include "dbh.inc.php";
-              $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+              $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
               $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)){
                   echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
                 }
                 ?>
                 </select>
-                <select name="pickSix" id="pickSix">
-                <option selected="pickSix">--Select Team Four--</option>
+                <select name="pickTen" id="pickTen">
+                <option selected="pickTen">--Select Extra Two--</option>
               <?php
               include "dbh.inc.php";
-              $sql = "SELECT * FROM teams WHERE dayone = 'FALSE' ORDER BY seed";
+              $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
+              $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($result)){
+                  echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
+                }
+                ?>
+                </select>
+                <select name="pickTen" id="pickTen">
+                <option selected="pickTen">--Select Extra Three--</option>
+              <?php
+              include "dbh.inc.php";
+              $sql = "SELECT * FROM teams WHERE daythree = 'TRUE' ORDER BY seed";
               $result = mysqli_query($conn, $sql);
                 while ($row = mysqli_fetch_array($result)){
                   echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
@@ -107,6 +120,24 @@ if(!isset($_SESSION['usersid'])){
             
       </div>
   </section>
+  <section>
+    <?php
+  $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
+    
+    echo "<h3> ALL TEAMS PICKED
+    </h3>";
+    while($row = mysqli_fetch_array($result))
+    {
+    echo "<h2 style=font-size:24px;margin-bottom:10px;>";
+
+    echo "<br>" . $row['pickOne'] . "</br>";
+    echo "<br>" . $row['pickTwo'] . "</br>";
+    echo "<br>" . $row['pickThree'] . "</br>";
+    echo "<br>" . $row['pickFour'] . "</br>";
+    if (($row["buybackdayone"] == 'TRUE'))  {
+      echo "<br>" . $row['pickFive'] . "</br>";
+      echo "<br>" . $row['pickSix'] . "</br>"; 
+    }else{}}?>
   
           
 <?php
