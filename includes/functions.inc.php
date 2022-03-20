@@ -108,6 +108,9 @@ function duplicateTeamsDayTwoFourPicks($pickSeven, $pickEight, $pickNine, $pickT
 }
 
 
+
+
+
 // Check if passwords matches
 function pwdMatch($pwd, $pwdrepeat) {
 	$result;
@@ -235,17 +238,17 @@ function loginUser($conn, $username, $pwd) {
 	}
 
 }
-function makePicks($conn, $pickSeven, $id) {
-	$sql = "INSERT INTO users (pickSeven, usersid)
+function makePicks($conn, $dayfour_pickone, $id) {
+	$sql = "INSERT INTO users (dayfour_pickone, usersid)
 	VALUES (?, ?)
 	ON DUPLICATE KEY UPDATE
-			pickSeven = VALUES(pickSeven)";
+			dayfour_pickone = VALUES(dayfour_pickone)";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 	 	header("location: ../makepicks.php?error=stmtfailed");
 		exit();
 	}
-	mysqli_stmt_bind_param($stmt, "ss", $pickSeven, $id);
+	mysqli_stmt_bind_param($stmt, "ss", $dayfour_pickone, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../index.php");
@@ -272,21 +275,22 @@ function makePicksDayTwoExtraTwo($conn, $pickThree, $pickFour, $pickFive, $pickS
 	exit();
 }
 
-function makePicksDayThreeExtraThree($conn, $pickSeven, $pickEight, $pickNine, $pickTen, $pickEleven, $id) {
-	$sql = "INSERT INTO users (pickSeven, pickEight, pickNine, pickTen, pickEleven, usersid)
-	VALUES (?, ?, ?, ?, ?, ?)
+function makePicksDayFourExtraFive($conn, $dayfour_pickone, $dayfour_extraone, $dayfour_extratwo, $dayfour_extrathree, $dayfour_extrafour, $dayfour_extrafive, $id) {
+	$sql = "INSERT INTO users (dayfour_pickone, dayfour_extraone, dayfour_extratwo, dayfour_extrathree, dayfour_extrafour, dayfour_extrafive, usersid)
+	VALUES (?, ?, ?, ?, ?, ?, ?)
 	ON DUPLICATE KEY UPDATE
-			pickSeven = VALUES(pickSeven),
-			pickEight = VALUES(pickEight),
-			pickNine = VALUES(pickNine),
-			pickTen = VALUES(pickTen),
-			pickEleven = VALUES(pickEleven)";
+	dayfour_pickone = VALUES(dayfour_pickone),
+	dayfour_extraone = VALUES(dayfour_extraone),
+	dayfour_extratwo = VALUES(dayfour_extratwo),
+	dayfour_extrathree = VALUES(dayfour_extrathree),
+	dayfour_extrafour = VALUES(dayfour_extrafour),
+	dayfour_extrafive = VALUES(dayfour_extrafive)";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 	 	header("location: ../makepicks2.php?error=stmtfailed");
 		exit();
 	}
-	mysqli_stmt_bind_param($stmt, "ssssss", $pickSeven, $pickEight, $pickNine, $pickTen, $pickEleven, $id);
+	mysqli_stmt_bind_param($stmt, "sssssss", $dayfour_pickone, $dayfour_extraone, $dayfour_extratwo, $dayfour_extrathree, $dayfour_extrafour, $dayfour_extrafive, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../index.php");
