@@ -7,7 +7,7 @@ include_once 'header.php';
 include "dbh.inc.php";
 $db= $conn;
 $tableName="users";
-$columns= ['usersuid', 'pickThree','pickFour', 'pickFive', 'pickSix', 'pickSeven', 'pickEight', 'pickNine', 'pickTen', 'pickEleven'];
+$columns= ['usersuid', 'dayfour_pickone', 'dayfour_extraone', 'dayfour_extratwo', 'dayfour_extrathree', 'dayfour_extrafour', 'dayfour_extrafive'];
 $fetchData = fetch_data($db, $tableName, $columns);
 
 function fetch_data($db, $tableName, $columns){

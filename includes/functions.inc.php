@@ -231,7 +231,7 @@ function loginUser($conn, $username, $pwd) {
 		$_SESSION["usersid"] = $uidExists["usersid"];
 		$_SESSION["useruid"] = $uidExists["usersUid"];
 		$_SESSION["usersName"] = $uidExists["usersName"];
-		$_SESSION["buybackdaytwo"] = $uidExists["buybackdaytwo"];
+		$_SESSION["buybackdaythree"] = $uidExists["buybackdaytwo"];
 		$_SESSION["eliminated"] = $uidExists["eliminated"];
 		header("location: ../index.php?error=none");
 		exit();

@@ -117,7 +117,7 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
           ?>
             <tr>
             <td><?php echo $data['usersuid']??''; ?></td>
-            <td><?php echo $data['pickSeven']??''; ?></td>
+            <td><?php echo $data['dayfour_pickone']??''; ?></td>
             <td><?php echo $data['pickEight']??''; ?></td>
             <td><?php echo $data['pickNine']??''; ?></td>
             <td><?php echo $data['pickTen']??''; ?></td>
@@ -186,6 +186,7 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
           ?>
             <tr>
             <td><?php echo $data['usersuid']??''; ?></td>
+            <td><?php echo $data['dayfour_pickone']??''; ?></td>
             <td><?php echo $data['dayfour_extraone']??''; ?></td>
             <td><?php echo $data['dayfour_extratwo']??''; ?></td>
             <td><?php echo $data['dayfour_extrathree']??''; ?></td>
