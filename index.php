@@ -61,7 +61,7 @@ justify-content: center;
 <link rel="stylesheet" href="css/style.css">
 
 </section>
-<div class="container" style="text-align: -webkit-center;">
+<div class="container" style="font-size:smaller;text-align: -webkit-center;">
 
  <div class="row" style="display:contents">
    <div class="col-sm-8" style=margin-left:auto;margin-right:auto;>
@@ -70,21 +70,21 @@ justify-content: center;
  $id = ($_SESSION['usersid']);
 date_default_timezone_set('America/New_York');
 $date_now = new DateTime();
-$date2    = new DateTime("03/20/2022 12:15:00.000000");
+$date2    = new DateTime("03/24/2022 19:00:00.000000");
 
 if ($date_now < $date2) {
-   $d=mktime(12, 15, 00, 3, 20, 2022);
-echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
+   $d=mktime(19, 00, 00, 3, 24, 2022);
+echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
     
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
-      echo "<h3> Day 4 Picks
+      echo "<h3> Day 5 Picks
       </h3>";
       while($row = mysqli_fetch_array($result))
       {
       echo "<h2 style=font-size:24px;margin-bottom:20px;>";
 
-      echo "<br>" . $row['dayfour_pickOne'] . "</br>";
+      echo "<br>" . $row['dayfive_pickOne'] . "</br>";
       if (($row["buybackdaythree"] == 'TRUE'))  {
       echo "<br>" . $row['dayfour_extraone'] . "</br>";
       echo "<br>" . $row['dayfour_extratwo'] . "</br>";
@@ -99,15 +99,18 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
       mysqli_close($conn); 
     
 ?> 
-<div class="table-responsive" style=margin-top:20px;display:contents;>
+<div class="table-responsive" style=font-size:small;margin-top:20px;display:contents;>
             <table class="table table-bordered" style=margin-left:auto;font-size: small;>
              
-               <th>Username</th>
-               <th>Day 3 Pick One</th>
-               <th>Day 3 Pick Two</th>
-               <th>Day 3 Pick Three</th>
-               <th>Day 3 Pick Four</th>
-               <th>Day 3 Pick Five</th>
+            <th>Username</th>
+               <th>Team One</th>
+               <th>Team Two</th>
+               <th>Team Three</th>
+               <th>Team Four</th>
+               <th>Team Five</th>
+               <th>Team Six</th>
+               <th>Team Seven</th>
+               
           </thead>
           <tbody>
         <?php
@@ -117,15 +120,18 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
           ?>
             <tr>
             <td><?php echo $data['usersuid']??''; ?></td>
-            <td><?php echo $data['dayfour_pickone']??''; ?></td>
-            <td><?php echo $data['pickEight']??''; ?></td>
-            <td><?php echo $data['pickNine']??''; ?></td>
-            <td><?php echo $data['pickTen']??''; ?></td>
-            <td><?php echo $data['pickEleven']??''; ?></td>
-      
+            <td><?php echo $data['pickOne']??''; ?></td>
+            <td><?php echo $data['pickTwo']??''; ?></td>
+            <td><?php echo $data['pickThree']??''; ?></td>
+            <td><?php echo $data['pickFour']??''; ?></td>
+            <td><?php echo $data['dayfour_pickOne']??''; ?></td>
+              <td><?php echo $data['pickFive']??''; ?></td>
+              <td><?php echo $data['pickSix']??''; ?></td>
+            
+            <?php } ?>
            </tr>
            <?php
-            $sn++;}}else{ ?>
+            $sn++;}else{ ?>
             <tr>
               <td colspan="8">
           <?php echo $fetchData; ?>
@@ -170,12 +176,13 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
             <table class="table table-bordered" style=margin-left:auto;font-size: small;>
              
                <th>Username</th>
-               <th>Day 4 Pick One</th>
-               <th>Day 4 Extra One</th>
-               <th>Day 4 Extra Two</th>
-               <th>Day 4 Extra Three</th>
-               <th>Day 4 Extra Four</th>
-               <th>Day 4 Extra Five</th>
+               <th>Team One</th>
+               <th>Team Two</th>
+               <th>Team Three</th>
+               <th>Team Four</th>
+               <th>Team Five</th>
+               <th>Team Six</th>
+               <th>Team Seven</th>
                
           </thead>
           <tbody>
@@ -186,15 +193,18 @@ echo "Picks will be locked in for Day 3 on " . date("M-d-Y h:i:a", $d);
           ?>
             <tr>
             <td><?php echo $data['usersuid']??''; ?></td>
-            <td><?php echo $data['dayfour_pickone']??''; ?></td>
-            <td><?php echo $data['dayfour_extraone']??''; ?></td>
-            <td><?php echo $data['dayfour_extratwo']??''; ?></td>
-            <td><?php echo $data['dayfour_extrathree']??''; ?></td>
-            <td><?php echo $data['dayfour_extrafour']??''; ?></td>
-            <td><?php echo $data['dayfour_extrafive']??''; ?></td>
+            <td><?php echo $data['pickOne']??''; ?></td>
+            <td><?php echo $data['pickTwo']??''; ?></td>
+            <td><?php echo $data['pickThree']??''; ?></td>
+            <td><?php echo $data['pickFour']??''; ?></td>
+            <td><?php echo $data['dayfour_pickOne']??''; ?></td>
+              <td><?php echo $data['pickFive']??''; ?></td>
+              <td><?php echo $data['pickSix']??''; ?></td>
+            
+            <?php } ?>
            </tr>
            <?php
-            $sn++;}}else{ ?>
+            $sn++;}else{ ?>
             <tr>
               <td colspan="8">
           <?php echo $fetchData; ?>
