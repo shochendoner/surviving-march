@@ -43,25 +43,25 @@ if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-  $date2    = new DateTime("03/20/2022 12:00:00");
+  $date2    = new DateTime("03/24/2022 19:00:00");
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
   if ($date_now > $date2) {
-    $d=mktime(12, 00, 00, 3, 20, 2022);
- echo "Picks will be locked in for Day 4 at " . date("M-d-Y h:i:a", $d);
+    $d=mktime(19, 00, 00, 3, 24, 2022);
+ echo "Picks will be locked in for Day 5 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
       echo "<table>
       <tr>
-      <th>Pick Day 4</th>
+      <th>Pick Day 5</th>
       </tr>";
 
       while($row = mysqli_fetch_array($result))
       {
       echo "<tr>";
-      echo "<td>" . $row['dayfour_pickone'] . "</td>";
+      echo "<td>" . $row['dayfive_pickOne'] . "</td>";
       echo "</tr>";
       }
       echo "</table>";
@@ -73,7 +73,7 @@ if(!isset($_SESSION['usersid'])){
       }
 ?>
 
-  <h1>Make Your Selections for Day 4</h1>
+  <h1>Make Your Selections for Day 5</h1>
   </section>
   <?php
 
@@ -84,11 +84,11 @@ if(!isset($_SESSION['usersid'])){
         <div class="select-picks">
         <h3 style="font-size: x-large;">Do not select the same team twice!</h3>
               <form action="includes/makepicks.inc.php" method="POST">  
-              <select name="dayfour_pickone" id="dayfour_pickone">
-                <option selected="dayfour_pickone">--Select Team One--</option>
+              <select name="dayfive_pickOne" id="dayfive_pickOne">
+                <option selected="dayfive_pickOne">--Select Team One--</option>
                 <?php
                 include "dbh.inc.php";
-                $sql = "SELECT * FROM teams WHERE dayfour = 'TRUE' ORDER BY seed";
+                $sql = "SELECT * FROM teams WHERE dayfive = 'TRUE' ORDER BY seed";
                 $result = mysqli_query($conn, $sql);
                   while ($row = mysqli_fetch_array($result)){
                     echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
@@ -124,6 +124,7 @@ if(!isset($_SESSION['usersid'])){
     echo "<br>" . $row['pickFive'] . "</br>";
     echo "<br>" . $row['pickSix'] . "</br>"; 
     echo "<br>" . $row['pickSeven'] . "</br>"; 
+    echo "<br>" . $row['dayfour_pickOne'] . "</br>"; 
     }?>
         
 <?php
