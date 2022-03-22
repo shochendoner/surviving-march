@@ -238,7 +238,7 @@ function loginUser($conn, $username, $pwd) {
 	}
 
 }
-function makePicks($conn, $dayfivr_pickone, $id) {
+function makePicks($conn, $dayfive_pickone, $id) {
 	$sql = "INSERT INTO users (dayfive_pickone, usersid)
 	VALUES (?, ?)
 	ON DUPLICATE KEY UPDATE
