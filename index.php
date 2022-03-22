@@ -151,13 +151,13 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
       }else{
         $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
-      echo "<h3> Day 4 Picks
+      echo "<h3> Day 5 Picks
       </h3>";
       while($row = mysqli_fetch_array($result))
       {
       echo "<h2 style=font-size:24px;margin-bottom:10px;>";
 
-      echo "<br>" . $row['dayfour_pickOne'] . "</br>";
+      echo "<br>" . $row['dayfive_pickOne'] . "</br>";
       if (($_SESSION["buybackdayThree"] == 'TRUE'))  {
       echo "<br>" . $row['dayfour_extraone'] . "</br>";
       echo "<br>" . $row['dayfour_extratwo'] . "</br>";
