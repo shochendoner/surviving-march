@@ -61,7 +61,7 @@ justify-content: center;
 <link rel="stylesheet" href="css/style.css">
 
 </section>
-<div class="container" style="font-size:smaller;text-align: -webkit-center;">
+<div class="container" style="font-size:12px;text-align: -webkit-center;">
 
  <div class="row" style="display:contents">
    <div class="col-sm-8" style=margin-left:auto;margin-right:auto;>
@@ -129,6 +129,7 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
               <td><?php echo $data['pickFive']??''; ?></td>
               <td><?php echo $data['pickSix']??''; ?></td>
               <td><?php echo $data['pickSeven']??''; ?></td>
+              
             
             <?php } ?>
            </tr>
@@ -175,7 +176,7 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
   
        </div>
           <div class="table-responsive" style=margin-top:20px;display:contents;>
-            <table class="table table-bordered" style=margin-left:auto;font-size: small;>
+            <table class="table table-bordered" style=margin-right:auto;margin-left:auto;font-size: small;>
              
                <th>Username</th>
                <th>Team One</th>
@@ -185,6 +186,8 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
                <th>Team Five</th>
                <th>Team Six</th>
                <th>Team Seven</th>
+               <th>Team Eight</th>
+               <th>Team Nine</th>
                
           </thead>
           <tbody>
@@ -203,6 +206,8 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
               <td><?php echo $data['pickFive']??''; ?></td>
               <td><?php echo $data['pickSix']??''; ?></td>
               <td><?php echo $data['pickSeven']??''; ?></td>
+              <td><?php echo $data['dayfive_pickOne']??''; ?></td>
+
 
             
             <?php } ?>

@@ -10,8 +10,6 @@ if(!isset($_SESSION['usersid'])){
    <a href=signup.php>Signup Here</a></font> ";
    exit;
 }else{
-  
-
   }
 
 ?>
