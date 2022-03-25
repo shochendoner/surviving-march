@@ -70,21 +70,21 @@ justify-content: center;
  $id = ($_SESSION['usersid']);
 date_default_timezone_set('America/New_York');
 $date_now = new DateTime();
-$date2    = new DateTime("03/24/2022 19:00:00.000000");
+$date2    = new DateTime("03/25/2022 19:00:00.000000");
 
 if ($date_now < $date2) {
-   $d=mktime(19, 00, 00, 3, 24, 2022);
-echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
+   $d=mktime(19, 00, 00, 3, 25, 2022);
+echo "Picks will be locked in for Day 6 on " . date("M-d-Y h:i:a", $d);
     
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
-      echo "<h3> Day 5 Picks
+      echo "<h3> Day 6 Picks
       </h3>";
       while($row = mysqli_fetch_array($result))
       {
       echo "<h2 style=font-size:24px;margin-bottom:20px;>";
 
-      echo "<br>" . $row['dayfive_pickOne'] . "</br>";
+      echo "<br>" . $row['daysix'] . "</br>";
       if (($row["buybackdaythree"] == 'TRUE'))  {
       echo "<br>" . $row['dayfour_extraone'] . "</br>";
       echo "<br>" . $row['dayfour_extratwo'] . "</br>";
@@ -111,6 +111,7 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
                <th>Team Six</th>
                <th>Team Seven</th>
                <th>Team Eight</th>
+               <th>Team Nine</th>
                
           </thead>
           <tbody>
@@ -129,6 +130,7 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
               <td><?php echo $data['pickFive']??''; ?></td>
               <td><?php echo $data['pickSix']??''; ?></td>
               <td><?php echo $data['pickSeven']??''; ?></td>
+              <td><?php echo $data['dayfive_pickOne']??''; ?></td>
               
             
             <?php } ?>
@@ -152,7 +154,7 @@ echo "Picks will be locked in for Day 5 on " . date("M-d-Y h:i:a", $d);
       }else{
         $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
     
-      echo "<h3> Day 5 Picks
+      echo "<h3> Day 6 Picks
       </h3>";
       while($row = mysqli_fetch_array($result))
       {
