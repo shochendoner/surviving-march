@@ -112,6 +112,7 @@ echo "Picks will be locked in for Day 6 on " . date("M-d-Y h:i:a", $d);
                <th>Team Seven</th>
                <th>Team Eight</th>
                <th>Team Nine</th>
+               <th>Team Ten</th>
                
           </thead>
           <tbody>
@@ -131,6 +132,7 @@ echo "Picks will be locked in for Day 6 on " . date("M-d-Y h:i:a", $d);
               <td><?php echo $data['pickSix']??''; ?></td>
               <td><?php echo $data['pickSeven']??''; ?></td>
               <td><?php echo $data['dayfive_pickOne']??''; ?></td>
+              <td><?php echo $data['daysix']??''; ?></td>
               
             
             <?php } ?>
@@ -190,6 +192,7 @@ echo "Picks will be locked in for Day 6 on " . date("M-d-Y h:i:a", $d);
                <th>Team Seven</th>
                <th>Team Eight</th>
                <th>Team Nine</th>
+               <th>Team Ten</th>
                
           </thead>
           <tbody>
@@ -209,6 +212,7 @@ echo "Picks will be locked in for Day 6 on " . date("M-d-Y h:i:a", $d);
               <td><?php echo $data['pickSix']??''; ?></td>
               <td><?php echo $data['pickSeven']??''; ?></td>
               <td><?php echo $data['dayfive_pickOne']??''; ?></td>
+              <td><?php echo $data['daysix']??''; ?></td>
 
 
             
