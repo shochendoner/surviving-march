@@ -41,12 +41,12 @@ if(!isset($_SESSION['usersid'])){
   $id = $_SESSION['usersid'];
   $date_now = new DateTime();
   // DATE OF PICKS TO BE CHANGED
-  $date2    = new DateTime("03/26/2022 18:00:00");
+  $date2    = new DateTime("03/27/2022 14:00:00");
   $sql = "SELECT * FROM users WHERE usersid = $id";
   $result = mysqli_query($conn, $sql);
 
   if ($date_now > $date2) {
-    $d=mktime(18, 00, 00, 3, 26, 2022);
+    $d=mktime(14, 00, 00, 3, 27, 2022);
  echo "Picks will be locked in for Day 7 at " . date("M-d-Y h:i:a", $d);
      
     $result = mysqli_query($conn,"SELECT * FROM users WHERE usersid = $id");
@@ -59,7 +59,7 @@ if(!isset($_SESSION['usersid'])){
       while($row = mysqli_fetch_array($result))
       {
       echo "<tr>";
-      echo "<td>" . $row['dayseven'] . "</td>";
+      echo "<td>" . $row['dayeight'] . "</td>";
       echo "</tr>";
       }
       echo "</table>";
@@ -82,11 +82,11 @@ if(!isset($_SESSION['usersid'])){
         <div class="select-picks">
         <h3 style="font-size: x-large;">Do not select the same team twice!</h3>
               <form action="includes/makepicks.inc.php" method="POST">  
-              <select name="dayseven" id="dayseven">
-                <option selected="dayseven">--Select Team One--</option>
+              <select name="dayeight" id="dayeight">
+                <option selected="dayeight">--Select Team One--</option>
                 <?php
                 include "dbh.inc.php";
-                $sql = "SELECT * FROM teams WHERE dayseven = 'TRUE' ORDER BY seed";
+                $sql = "SELECT * FROM teams WHERE dayseven = 'FALSE' ORDER BY seed";
                 $result = mysqli_query($conn, $sql);
                   while ($row = mysqli_fetch_array($result)){
                     echo '<option value="'.$row['team_name'].'">'.$row['seed'].'  '.$row['team_name'].'</option>';
@@ -125,6 +125,7 @@ if(!isset($_SESSION['usersid'])){
     echo "<br>" . $row['dayfour_pickOne'] . "</br>"; 
     echo "<br>" . $row['dayfive_pickOne'] . "</br>"; 
     echo "<br>" . $row['daysix'] . "</br>"; 
+    echo "<br>" . $row['dayseven'] . "</br>"; 
     }?>
         
 <?php

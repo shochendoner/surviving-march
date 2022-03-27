@@ -238,17 +238,17 @@ function loginUser($conn, $username, $pwd) {
 	}
 
 }
-function makePicks($conn, $dayseven, $id) {
-	$sql = "INSERT INTO users (dayseven, usersid)
+function makePicks($conn, $dayeight, $id) {
+	$sql = "INSERT INTO users (dayeight, usersid)
 	VALUES (?, ?)
 	ON DUPLICATE KEY UPDATE
-			dayseven = VALUES(dayseven)";
+			dayeight = VALUES(dayeight)";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 	 	header("location: ../makepicks.php?error=stmtfailed");
 		exit();
 	}
-	mysqli_stmt_bind_param($stmt, "ss", $dayseven, $id);
+	mysqli_stmt_bind_param($stmt, "ss", $dayeight, $id);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../index.php");

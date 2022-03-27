@@ -3,7 +3,7 @@ body {
 }
 
 .wrapper {
-  width: 900px;
+  width: fit-content;
   margin: 0 auto;
 }
 
